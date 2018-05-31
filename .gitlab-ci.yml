@@ -1,5 +1,5 @@
 before_script:
-# Install  dependencies
+# Install dependencies
 - bash ci/docker_install.sh > /dev/null
 
 services:
