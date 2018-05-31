@@ -1,20 +1,33 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: holing
- * Date: 2018/5/30
- * Time: 23:54
- */
-
-
-    if (!isset($_GET["category"]))
+    require "database.php";
+    require "session.php";
+    require "PostContent.php";
+    class PostUploader extends ContentUploader
     {
-        $category = "general";
+        private $category;
+
+        public function __construct($category, $content, $database)
+        {
+            parent::__construct($content, $database);
+            $this->category = $category;
+        }
+        public function doPost()
+        {
+            $user_id = getCurUserId();
+            $ret = $this->database->postMsg($this->content, $this->category, $user_id);
+            self::returnJsonStatus($ret);
+        }
     }
-    $category = $_GET["category"];
-    $preference = $_GET[""];
 
-    get_indfo($category, $preference);
+    $db = PostGREDatabase::getInstance();
 
-    ?>
-{"msg":"qwe"}
+    if (!isset($_POST["category"]))
+    {
+        ?>
+        {"status":false, "error":"no category specified"}
+        <?php
+        die();
+    }
+    $content = isset($_POST["content"]) ? $_POST["content"] : "";
+    $uploader = new PostUploader($_POST["category"], $content, $db);
+    $uploader->doPost();
