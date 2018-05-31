@@ -1,11 +1,11 @@
 <?php
-final class MySqlDatabase
+final class PostGREDatabase
 {
     private static $instance = null;
     public static function getInstance()
     {
         if (self::$instance === null) {
-            self::$instance = new MySqlDatabase();
+            self::$instance = new PostGREDatabase();
         }
         return self::$instance;
     }
@@ -15,6 +15,8 @@ final class MySqlDatabase
     const DB_USERNAME = "8e3aa7ce047cce83c88378ea714ff2e92b92f03fd2bbf0c6a9cca0460ccabb7";
     const DB_PASSWORD = "28495285ff313e06e171a6854b54070b90e5305658d3c7ac876acdaf187ac8d";
     const DB_NAME = "webapps";
+    const DB_POSTS_TAB = "posts";
+    const DB_COMMENTS_TAB = "comments";
     //constants
 
 
@@ -44,8 +46,8 @@ final class MySqlDatabase
     {
         $timestamp = (new DateTime())->getTimestamp();
 
-        $query = "INSERT INTO posts ".
-            "(user_id,post_time,picture,content,category,deleted,anonymous,view_num,like_num)".
+        $query = "INSERT INTO ".self::DB_POSTS_TAB.
+            " (user_id,post_time,picture,content,category,deleted,anonymous,view_num,like_num)".
             " VALUES (".$user_id.",".$timestamp.",'todo',$1,$2,false,false,0,0)";
         $result = pg_prepare($this->conn, "post_msg", $query);
         if (!$result)
@@ -59,6 +61,23 @@ final class MySqlDatabase
         }
         return true;
     }
-
+    public function postComment($msg_id, $content, $reply_id, $user_id)
+    {
+        $timestamp = (new DateTime())->getTimestamp();
+        $query ="INSERT INTO ".self::DB_COMMENTS_TAB.
+            " (poster_id,msg_id,comment_time,content,reply_id)".
+            " VALUES (".$user_id.",".$msg_id.",".$timestamp.",$1,".$reply_id.")";
+        $result = pg_prepare($this->conn, "post_comment", $query);
+        if (!$result)
+        {
+            return false;
+        }
+        $result = pg_execute($this->conn, "post_comment", array($content));
+        if (!$result)
+        {
+            return false;
+        }
+        return true;
+    }
 
 }
