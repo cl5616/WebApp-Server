@@ -18,6 +18,13 @@ class Post_test extends PHPUnit_Framework_TestCase
     {
         $getter = new PostGetter('category', 'content', $db);
 
-        $db->shouldReceive("getPosts")->once()->with(1);
+        $db->shouldReceive('getPost')->once()->with(1);
+    }
+
+    public function addComment()
+    {
+        $commenter = new CommentUploader('id', 'content', 'reply', $db);
+
+        $db->shouldReceive('postComment')->once()->with('id', 'content', 'reply', 1);
     }
 }
