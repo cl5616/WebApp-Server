@@ -1,20 +1,37 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: holing
- * Date: 2018/5/30
- * Time: 23:54
- */
-
-
-    if (!isset($_GET["category"]))
+    require "database.php";
+    require "session.php";
+    class PostUploader
     {
-        $category = "general";
+        private $category;
+        private $content;
+        private $database;
+
+        public function __construct($category, $content, $database)
+        {
+            $this->category = $category;
+            $this->content = $content;
+            $this->database = $database;
+        }
+        public function doPost()
+        {
+            $user_id = getCurUserId();
+            $ret = $this->database->postMsg($this->content, $this->category, $user_id);
+            $ret = $ret ? "true" : "false";
+            $error_msg = $ret ? "" : ",\"error\":\"database query error\"";
+            echo "{\"status\":".$ret.$error_msg."}";
+        }
     }
-    $category = $_GET["category"];
-    $preference = $_GET[""];
 
-    get_indfo($category, $preference);
+    $mysql_db = MySqlDatabase::getInstance();
 
-    ?>
-{"msg":"qwe"}
+    if (!isset($_POST["category"]))
+    {
+        ?>
+        {"status":false, "error":"no category specified"}
+        <?php
+        die();
+    }
+    $content = isset($_POST["content"]) ? $_POST["content"] : "";
+    $uploader = new PostUploader($_POST["category"], $content, $mysql_db);
+    $uploader->doPost();
