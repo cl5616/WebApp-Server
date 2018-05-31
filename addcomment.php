@@ -26,10 +26,12 @@
     {
         ContentUploader::returnJsonErrorDie("no msg_id being specified");
     }
+    $msg_id = intval($_POST["msg_id"]);
     if (!isset($_POST["reply_id"]))
     {
         ContentUploader::returnJsonErrorDie("no reply_id being specified");
     }
+    $reply_id = intval($_POST["reply_id"]);
     $content = isset($_POST["content"]) ? $_POST["content"] : "";
-    $uploader = new CommentUploader($_POST["msg_id"], $content, $_POST["reply_id"], $db);
+    $uploader = new CommentUploader($msg_id, $content, $reply_id, $db);
     $uploader->doComment();

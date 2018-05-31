@@ -79,5 +79,21 @@ final class PostGREDatabase
         }
         return true;
     }
+    public function getPosts()
+    {
+        $query = "SELECT msg_id,poster_id,content FROM ".self::DB_POSTS_TAB;
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+        {
+            self::dieWithErrorMsg("problem with database query, please try again");
+        }
+        $ret = array();
+        while ($row = pg_fetch_row($result))
+        {
+            $one_row = array("msg_id"=>$row[0], "poster_id"=>$row[1], "content"=>$row[2]);
+            array_push($ret, $one_row);
+        }
+        return $ret;
+    }
 
 }
