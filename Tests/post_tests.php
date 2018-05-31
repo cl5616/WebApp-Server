@@ -1,8 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-class Post_test extends TestCase
+class Post_test extends PHPUnit_Framework_TestCase
 {
     private $db = $this->createMock(PostGREDatabase::class);
     
