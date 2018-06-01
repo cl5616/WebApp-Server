@@ -1,6 +1,8 @@
 before_script:
 # Install dependencies
 - bash ci/docker_install.sh > /dev/null
+- eval $(ssh-agent -s)
+- echo "$SSH_PRIVATE_KEY" | tr -d ’\r’ | ssh-add - > /dev/null
 
 services:
 - postgres
@@ -17,3 +19,12 @@ test:7.0:
   image: php:7.0
   script:
   - phpunit Tests/postTests
+
+
+deploy:
+  script:
+  - pwd
+  - scp -o StrictHostKeyChecking=no ~/.m2/repository/uk/ac/imperial/doc/ci-example-webapp/0.0.1-SNAPSHOT/ci-example-webapp-0.0.1-SNAPSHOT.war \
+      <user>@<IP>:/var/lib/tomcat8/webapps/ci-example-webapp.war
+  only:
+  -master
