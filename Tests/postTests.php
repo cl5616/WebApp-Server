@@ -14,7 +14,7 @@ class Post_test extends TestCase
 
         $uploader = new PostUploader('category', 'content', $db);
 
-        $db->expects($this->once())->method('postMsg')->with('content','category', 1);
+        $db->expects($this->once())->method('postMsg')->with('content','category', 1)->willReturn('Hello');
 
         $uploader->doPost();
 
