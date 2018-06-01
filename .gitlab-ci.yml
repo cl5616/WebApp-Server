@@ -19,8 +19,3 @@ test:7.0:
   image: php:7.0
   script:
   - phpunit Tests/postTests
-
-
-deploy:
-  script:
-  - pwd
