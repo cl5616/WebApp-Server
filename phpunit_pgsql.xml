@@ -2,7 +2,7 @@
 
 <phpunit bootstrap="Tests/bootstrap.php" colors="true">
     <php>
-        <var name="db_dsn" value="pgsql:dbname=post_tests;host=postgres"/>
+        <var name="db_dsn" value="pgsql:dbname=postTests;host=postgres"/>
         <var name="db_username" value="postgres"/>
         <var name="db_password" value="postgres"/>
     </php>

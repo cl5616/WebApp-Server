@@ -1,5 +1,14 @@
 <?php
-final class PostGREDatabase
+
+interface Database
+{
+    public function postMsg($content, $category, $user_id);
+    public function postComment($msg_id, $content, $reply_id, $user_id);
+    public function getPosts();
+}
+
+
+final class PostGREDatabase implements Database
 {
     private static $instance = null;
     public static function getInstance()
