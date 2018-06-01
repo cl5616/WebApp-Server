@@ -21,6 +21,7 @@ final class PostGREDatabase implements Database
     //singleton database
 
     const DB_SERVER = "db.doc.ic.ac.uk";
+    const DB_PORT = 5432;
     const DB_USERNAME = "g1727111_u";
     const DB_PASSWORD = "kows5bepvO";
     const DB_NAME = "g1727111_u";
@@ -36,7 +37,8 @@ final class PostGREDatabase implements Database
             "host=".self::DB_SERVER.
             " dbname=".self::DB_NAME.
             " user=".self::DB_USERNAME.
-            " password=".self::DB_PASSWORD);
+            " password=".self::DB_PASSWORD).
+            " port=".self::DB_PORT;
         //The connection will be closed automatically when the script ends.
         if (!$this->conn)
         {
