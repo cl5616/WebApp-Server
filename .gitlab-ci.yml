@@ -20,8 +20,8 @@ test:7.0:
   script:
   - phpunit Tests/postTests
 
-deploy:
-  script:
+#deploy:
+#  script:
 #  - pwd
 #  - scp -o StrictHostKeyChecking=no -r WebAppsServer /home/gitlab-runner/builds/b95d5946/0/hr1316/ cl5616@shell2.ic.ac.uk
 #  - ssh cl5616@doc.ic.ac.uk
