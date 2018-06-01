@@ -20,10 +20,10 @@ final class PostGREDatabase implements Database
     }
     //singleton database
 
-    const DB_SERVER = "localhost";
-    const DB_USERNAME = "8e3aa7ce047cce83c88378ea714ff2e92b92f03fd2bbf0c6a9cca0460ccabb7";
-    const DB_PASSWORD = "28495285ff313e06e171a6854b54070b90e5305658d3c7ac876acdaf187ac8d";
-    const DB_NAME = "webapps";
+    const DB_SERVER = "db.doc.ic.ac.uk";
+    const DB_USERNAME = "g1727111_u";
+    const DB_PASSWORD = "kows5bepvO";
+    const DB_NAME = "g1727111_u";
     const DB_POSTS_TAB = "posts";
     const DB_COMMENTS_TAB = "comments";
     //constants

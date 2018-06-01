@@ -21,7 +21,7 @@
             self::returnJsonStatus($ret);
         }
     }
-/*
+
     $db = PostGREDatabase::getInstance();
 
     if (!isset($_POST["category"]))
@@ -35,4 +35,3 @@
     $uploader = new PostUploader($_POST["category"], $content, $db);
     $uploader->doPost();
 
-*/

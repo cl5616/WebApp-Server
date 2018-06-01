@@ -23,7 +23,7 @@
             parent::returnJsonStatus($ret);
         }
     }
-    /*
+/*
 
     $db = PostGREDatabase::getInstance();
     if (!isset($_POST["msg_id"]))
@@ -39,4 +39,6 @@
     $content = isset($_POST["content"]) ? $_POST["content"] : "";
     $uploader = new CommentUploader($msg_id, $content, $reply_id, $db);
     $uploader->doComment();
-    */
+
+*/
+
