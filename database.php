@@ -33,12 +33,13 @@ final class PostGREDatabase implements Database
     private $conn;
     private function __construct()
     {
+        $i = "fuck";
         $this->conn = pg_connect(
             "host=".self::DB_SERVER.
             " dbname=".self::DB_NAME.
             " user=".self::DB_USERNAME.
-            " password=".self::DB_PASSWORD).
-            " port=".self::DB_PORT;
+            " password=".self::DB_PASSWORD.
+            " port=".self::DB_PORT);
         //The connection will be closed automatically when the script ends.
         if (!$this->conn)
         {
@@ -92,7 +93,7 @@ final class PostGREDatabase implements Database
     }
     public function getPosts()
     {
-        $query = "SELECT msg_id,poster_id,content FROM ".self::DB_POSTS_TAB;
+        $query = "SELECT id,user_id,content FROM ".self::DB_POSTS_TAB;
         $result = pg_query($this->conn, $query);
         if (!$result)
         {

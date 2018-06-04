@@ -18,12 +18,9 @@
             echo json_encode($this->database->getPosts(getCurUserId()));
         }
     }
-/*
 
     $preference = isset($_GET["preference"]) ? $_GET["preference"] : "time";
     $category = isset($_GET["category"]) ? $_GET["category"] : "general";
     $getter = new PostGetter($category, $preference,
         PostGREDatabase::getInstance());
     $getter->getPosts();
-
-*/
