@@ -1,4 +1,4 @@
-#!/usr/bin/php
+
 <?php
 
 interface Database
@@ -57,11 +57,9 @@ final class PostGREDatabase implements Database
 
     public function postMsg($content, $category, $user_id)
     {
-        $timestamp = (new DateTime())->getTimestamp();
-
         $query = "INSERT INTO ".self::DB_POSTS_TAB.
             " (user_id,post_time,picture,content,category,deleted,anonymous,view_num,like_num)".
-            " VALUES (".$user_id.",".$timestamp.",'todo',$1,$2,false,false,0,0)";
+            " VALUES (".$user_id.",CURRENT_TIMESTAMP,'todo',$1,$2,B'0',B'0',0,0)";
         $result = pg_prepare($this->conn, "post_msg", $query);
         if (!$result)
         {
@@ -76,10 +74,9 @@ final class PostGREDatabase implements Database
     }
     public function postComment($msg_id, $content, $reply_id, $user_id)
     {
-        $timestamp = (new DateTime())->getTimestamp();
         $query ="INSERT INTO ".self::DB_COMMENTS_TAB.
             " (poster_id,msg_id,comment_time,content,reply_id)".
-            " VALUES (".$user_id.",".$msg_id.",".$timestamp.",$1,".$reply_id.")";
+            " VALUES (".$user_id.",".$msg_id.",CURRENT_TIMESTAMP,$1,".$reply_id.")";
         $result = pg_prepare($this->conn, "post_comment", $query);
         if (!$result)
         {
@@ -103,7 +100,7 @@ final class PostGREDatabase implements Database
         $ret = array();
         while ($row = pg_fetch_row($result))
         {
-            $one_row = array("msg_id"=>$row[0], "poster_id"=>$row[1], "content"=>$row[2]);
+            $one_row = array("msg_id"=>(int)$row[0], "poster_id"=>(int)$row[1], "content"=>$row[2]);
             array_push($ret, $one_row);
         }
         return $ret;

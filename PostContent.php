@@ -1,4 +1,4 @@
-#!/usr/bin/php
+
 <?php
 abstract class ContentUploader
 {

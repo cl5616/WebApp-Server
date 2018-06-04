@@ -1,10 +1,7 @@
 #!/usr/bin/php
 <?php
-    /*
-     * require "database.php";
+    require "database.php";
     require "session.php";
-     */
-    require "getposts.php";
     require "PostContent.php";
     class PostUploader extends ContentUploader
     {
@@ -24,6 +21,9 @@
     }
 
     $db = PostGREDatabase::getInstance();
+
+    //test
+    $_POST["category"]= "todo";
 
     if (!isset($_POST["category"]))
     {
