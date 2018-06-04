@@ -30,6 +30,6 @@ deployment:
   stage: deploy
   script:
   - pwd
-  - scp -o StrictHostKeyChecking=no -r /home/gitlab-runner/builds/b95d5946/0/hr1316/WebAppsServer cl5616@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727111
+  - scp -o StrictHostKeyChecking=no -r /home/gitlab-runner/builds/b95d5946/0/hr1316/WebAppsServer cl5616@shell3.doc.ic.ac.uk:/vol/project/2017/271/g1727111
   only:
   - master
