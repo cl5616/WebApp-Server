@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
     require "database.php";
     require "session.php";

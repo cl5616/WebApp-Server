@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fb6fc57-7292-40df-8d62-99cbae29cff9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ci/testing" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PostContent.php" beforeDir="false" afterPath="$PROJECT_DIR$/PostContent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addcomment.php" beforeDir="false" afterPath="$PROJECT_DIR$/addcomment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addpost.php" beforeDir="false" afterPath="$PROJECT_DIR$/addpost.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/getposts.php" beforeDir="false" afterPath="$PROJECT_DIR$/getposts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info" beforeDir="false" afterPath="$PROJECT_DIR$/info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit_pgsql.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit_pgsql.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testConnection.html" beforeDir="false" afterPath="$PROJECT_DIR$/testConnection.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/utils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp_db.md" beforeDir="false" afterPath="$PROJECT_DIR$/webapp_db.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,17 +28,17 @@
       <file leaf-file-name="addpost.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/addpost.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+            <state relative-caret-position="242">
+              <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="80" column="26" lean-forward="true" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+            <state relative-caret-position="241">
+              <caret line="81" column="26" lean-forward="true" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -37,17 +46,17 @@
       <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            <state relative-caret-position="48">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getposts.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="getposts.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/getposts.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+            <state relative-caret-position="288">
+              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -66,9 +75,9 @@
         <option value="$PROJECT_DIR$/PostContent.php" />
         <option value="$PROJECT_DIR$/addcomment.php" />
         <option value="$PROJECT_DIR$/PostInformation.php" />
-        <option value="$PROJECT_DIR$/getposts.php" />
-        <option value="$PROJECT_DIR$/utils.php" />
         <option value="$PROJECT_DIR$/database.php" />
+        <option value="$PROJECT_DIR$/utils.php" />
+        <option value="$PROJECT_DIR$/getposts.php" />
       </list>
     </option>
   </component>
@@ -161,12 +170,12 @@
       <updated>1527719085939</updated>
       <workItem from="1527719092768" duration="1848000" />
       <workItem from="1527764004471" duration="29230000" />
-      <workItem from="1528116305033" duration="12333000" />
+      <workItem from="1528116305033" duration="12666000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43411000" />
+    <option name="totallyTimeSpent" value="43744000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -179,12 +188,12 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32872927" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22526042" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22526042" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39917126" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39917126" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -205,7 +214,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/database.php</url>
-          <line>96</line>
+          <line>97</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
@@ -266,8 +275,8 @@
     <entry file="file://$PROJECT_DIR$/PostInformation.php" />
     <entry file="file://$PROJECT_DIR$/addpost.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+        <state relative-caret-position="242">
+          <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -278,24 +287,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getposts.php">
+    <entry file="file://$PROJECT_DIR$/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        <state relative-caret-position="241">
+          <caret line="81" column="26" lean-forward="true" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        <state relative-caret-position="48">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database.php">
+    <entry file="file://$PROJECT_DIR$/getposts.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="80" column="26" lean-forward="true" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+        <state relative-caret-position="288">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
         </state>
       </provider>
     </entry>

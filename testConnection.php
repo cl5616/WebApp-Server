@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <html>
 <head>
     <title>test connection</title>
