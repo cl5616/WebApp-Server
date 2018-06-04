@@ -6,7 +6,7 @@ before_script:
 # Install dependencies
 - bash ci/docker_install.sh > /dev/null
 - eval $(ssh-agent -s)
-- echo "$SSH_PRIVATE_KEY" | tr -d ’\r’ | ssh-add - > /dev/null
+- echo "$SSH_ACCESS_KEY" | tr -d ’\r’ | ssh-add - > /dev/null
 
 services:
 - postgres
