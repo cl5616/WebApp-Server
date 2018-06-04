@@ -5,8 +5,6 @@ stages:
 before_script:
 # Install dependencies
 - bash ci/docker_install.sh > /dev/null
-- eval $(ssh-agent -s)
-- echo "$SSH_ACCESS_KEY" | tr -d ’\r’ | ssh-add - > /dev/null
 
 services:
 - postgres
