@@ -1,8 +1,12 @@
+stages:
+  - test
+  - deploy
+
 before_script:
 # Install dependencies
 - bash ci/docker_install.sh > /dev/null
-#- eval $(ssh-agent -s)
-#- echo "$SSH_PRIVATE_KEY" | tr -d ’\r’ | ssh-add - > /dev/null
+- eval $(ssh-agent -s)
+- echo "$SSH_PRIVATE_KEY" | tr -d ’\r’ | ssh-add - > /dev/null
 
 services:
 - postgres
@@ -10,21 +14,22 @@ services:
 
 # We test PHP5.6
 test:5.6:
+  stage: test
   image: php:5.6
   script:
   - phpunit Tests/postTests
 
 # We test PHP7.0
 test:7.0:
+  stage: test
   image: php:7.0
   script:
   - phpunit Tests/postTests
 
-#deploy:
-#  script:
-#  - pwd
-#  - scp -o StrictHostKeyChecking=no -r WebAppsServer /home/gitlab-runner/builds/b95d5946/0/hr1316/ cl5616@shell2.ic.ac.uk
-#  - ssh cl5616@doc.ic.ac.uk
- # - ssh matrix16
-  #- cd /vol/project/2017/271/g1727111/WebAppsServer
-  #- git pull
+deployment:
+  stage: deploy
+  script:
+  - pwd
+  - scp -o StrictHostKeyChecking=no -r /home/gitlab-runner/builds/b95d5946/0/hr1316/WebAppsServer cl5616@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727111
+only:
+    - master
