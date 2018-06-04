@@ -5,7 +5,7 @@ stages:
 before_script:
 # Install dependencies
 - bash ci/docker_install.sh > /dev/null
-git
+
 services:
 - postgres
 
