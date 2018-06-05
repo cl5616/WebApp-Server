@@ -21,7 +21,7 @@ email, password, nickname, profile, bio, //todo settings
 ```sql
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
-	email varchar(256) UNIQUE,
+	email varchar(256) NOT NULL UNIQUE,
     password char(64) NOT NULL,
     salt char(64) NOT NULL,
     nickname char(32) NOT NULL,
