@@ -88,7 +88,7 @@ final class PostGREDatabase implements Database
     }
     public function getPosts()
     {
-        $query = "SELECT id,user_id,content FROM ".self::DB_POSTS_TAB;
+        $query = "SELECT id,user_id,content,picture FROM ".self::DB_POSTS_TAB;
         $result = pg_query($this->conn, $query);
         if (!$result)
         {
@@ -97,7 +97,10 @@ final class PostGREDatabase implements Database
         $ret = array();
         while ($row = pg_fetch_row($result))
         {
-            $one_row = array("msg_id"=>(int)$row[0], "poster_id"=>(int)$row[1], "content"=>$row[2]);
+            $one_row = array("msg_id"=>(int)$row[0],
+                "poster_id"=>(int)$row[1],
+                "content"=>$row[2],
+                "picture"=>$row[3]);
             array_push($ret, $one_row);
         }
         return $ret;
