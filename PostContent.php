@@ -1,14 +1,13 @@
 
 <?php
+require "utils.php";
 abstract class ContentUploader
 {
     protected $content;
     protected $database;
     protected static function returnJsonStatus($ret)
     {
-        $ret = $ret ? "true" : "false";
-        $error_msg = $ret ? "" : ",\"error\":\"database insert error\"";
-        echo "{\"status\":".$ret.$error_msg."}";
+        returnJsonStatus($ret);
     }
 
     public static function returnJsonErrorDie($msg)
