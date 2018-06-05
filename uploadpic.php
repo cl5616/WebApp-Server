@@ -22,6 +22,7 @@ function getImgName($imgType, $imgId, $ext)
     return $name;
 }
 
+
 dieIfEmpty($_FILES, "picture");
 
 $tmp_path = $_FILES["picture"]["tmp_name"];
@@ -38,7 +39,7 @@ if ($_FILES["picture"]["size"] > MAX_IMG_SIZE)
 dieIfEmpty($_POST, "type");
 dieIfEmpty($_POST, "id");
 
-$imgFilePath = "picture/".getImgName($_POST["type"], $_POST["id"], $ext);
+$imgFilePath = "pic/".getImgName((int)$_POST["type"], (int)$_POST["id"], $ext);
 if (file_exists($imgFilePath))
 {
     dieWithErrorMsg("image already exist");
