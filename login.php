@@ -18,16 +18,17 @@ class Login
     public function doLogin()
     {
         $result = $this->database->getEmailPswInfo($this->email);
-        if (!$result)
+        if ($result === false)
         {
             dieWithErrorMsg(PostGREDatabase::DB_QUERY_PROBLEM);
         }
         if (isset($result["id"]))
         {
             $hash = hash("sha256", $this->password.$result["salt"]);
-            if (strcmp($hash, $result["password"]))
+            if (strcmp($hash, $result["password"]) == 0)
             {
                 $_SESSION["id"] = $result["id"];
+                returnJsonStatus(true);
             }
             else
             {
@@ -40,6 +41,21 @@ class Login
         }
     }
 }
+//test-----
+/*/login success
+$_POST["email"] = "test@email.com";
+$_POST["password"] = "password";//*/
+
+/*/email incorrect
+$_POST["email"] = "wrong@email.com";
+$_POST["password"] = "password";//*/
+
+
+//password incorrect
+$_POST["email"] = "test@email.com";
+$_POST["password"] = "wrong password";//*/
+
+//test-----
 
 dieIfEmpty($_POST, "email");
 dieIfEmpty($_POST, "password");
