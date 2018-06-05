@@ -23,3 +23,18 @@ function dieWithErrorMsg($msg)
     {
         return isset($map[$key]) ? $map[$key] : "";
     }
+
+    function encodeNum($num, $num_bytes)
+    {
+        $ret = "";
+        for ($i = 0; $i < $num_bytes; $i++)
+        {
+            $ret .= chr($num & 0xff);
+            $num >>= 8;
+        }
+        $base64 = base64_encode($ret);
+        $enc = str_replace("+", "_", $base64);
+        $enc = str_replace("/", "-", $enc);
+        $enc = str_replace("=", "", $enc);
+        return $enc;
+    }
