@@ -1,7 +1,7 @@
 
 <?php
 
-require "utils.php";
+require_once "utils.php";
 
 interface Database
 {
