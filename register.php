@@ -1,5 +1,6 @@
 <?php
-require "utils.php";
+require_once "utils.php";
+require_once "database.php";
 class RegisterAccount
 {
     private $email;
@@ -25,7 +26,7 @@ class RegisterAccount
         }
         else
         {
-            $salt = openssl_random_pseudo_bytes(64);
+            $salt = bin2hex(openssl_random_pseudo_bytes(32));
             $password_hash = hash("sha256", $this->password.$salt);
 
             returnJsonStatus($this->database->doRegister($this->email,
@@ -38,8 +39,7 @@ class RegisterAccount
 //test-------
 $_POST["password"] = "password";
 $_POST["email"] = "test@email.com";
-$_POST[""]
-
+$_POST["nickname"] = "test";
 //test-------
 
 dieIfEmpty($_POST, "password");

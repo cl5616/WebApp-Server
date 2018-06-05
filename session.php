@@ -2,5 +2,5 @@
 <?php
 function getCurUserId()
 {
-    return 1;//todo
+    return isset($_SESSION["id"]) ? $_SESSION["id"] : 0;
 }
