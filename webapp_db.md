@@ -18,6 +18,18 @@ return json
 
 email, password, nickname, profile, bio, //todo settings
 
+```sql
+CREATE TABLE users(
+	email varchar(256) PRIMARY KEY,
+    password char(64) NOT NULL,
+    salt char(64) NOT NULL,
+    nickname char(32) NOT NULL,
+    introduction varchar(256)
+);
+```
+
+
+
 ## msg
 
 id, poster userid, timestamp, picture(ref), content, category, deleted,  anonymous, view, like
