@@ -1,6 +1,8 @@
 
 <?php
 
+require "utils.php";
+
 interface Database
 {
     public function postMsg($content, $category, $user_id);
@@ -12,6 +14,8 @@ interface Database
 final class PostGREDatabase implements Database
 {
     private static $instance = null;
+    const DB_QUERY_PROBLEM = "problem with database query, please try again";
+
     public static function getInstance()
     {
         if (self::$instance === null) {
@@ -28,6 +32,7 @@ final class PostGREDatabase implements Database
     const DB_NAME = "g1727111_u";
     const DB_POSTS_TAB = "posts";
     const DB_COMMENTS_TAB = "comments";
+    const DB_USER_TAB = "users";
     //constants
 
 
@@ -49,10 +54,9 @@ final class PostGREDatabase implements Database
         }
     }
 
-    private static function dieWithErrorMsg($msg)
+    public static function dieWithErrorMsg($msg)
     {
-        echo "{\"status\":false, \"error\":\"".$msg."\"}";
-        die();
+        dieWithErrorMsg($msg);
     }
 
     public function postMsg($content, $category, $user_id)
@@ -95,7 +99,7 @@ final class PostGREDatabase implements Database
         $result = pg_query($this->conn, $query);
         if (!$result)
         {
-            self::dieWithErrorMsg("problem with database query, please try again");
+            self::dieWithErrorMsg(self::DB_QUERY_PROBLEM);
         }
         $ret = array();
         while ($row = pg_fetch_row($result))
@@ -105,5 +109,46 @@ final class PostGREDatabase implements Database
         }
         return $ret;
     }
-
+    public function ifEmailExist($email)
+    {
+        $query = "SELECT email FROM users WHERE email = $1";
+        $result = pg_prepare($this->conn,"email_exist" , $query);
+        if (!$result)
+        {
+            self::dieWithErrorMsg(self::DB_QUERY_PROBLEM);
+        }
+        $result = pg_execute($this->conn, "email_exist", array($email));
+        if (!$result)
+        {
+            self::dieWithErrorMsg(self::DB_QUERY_PROBLEM);
+        }
+        if ($row = pg_fetch_row($result))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    public function doRegister($email,
+                               $password_hash, $salt,
+                               $nickname, $introduction)
+    {
+        $query = "INSERT INTO ".self::DB_USER_TAB.
+            " (email,password,salt,nickname,introduction)".
+            " VALUES ($1,'".$password_hash."','".$salt."',$2,$3)";
+        $result = pg_prepare($this->conn, "register_user", $query);
+        if (!$result)
+        {
+            return false;
+        }
+        $result = pg_execute($this->conn, "register_user", array(
+            $email, $nickname, $introduction));
+        if (!$result)
+        {
+            return false;
+        }
+        return true;
+    }
 }
