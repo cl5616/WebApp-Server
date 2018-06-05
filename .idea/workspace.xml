@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9fb6fc57-7292-40df-8d62-99cbae29cff9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/Tests/AllTests.php" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AllTests.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploadpic.php" beforeDir="false" afterPath="$PROJECT_DIR$/uploadpic.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,8 +57,11 @@
       <file leaf-file-name="AllTests.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Tests/AllTests.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="54" column="2" lean-forward="true" selection-start-line="54" selection-start-column="2" selection-end-line="54" selection-end-column="2" />
+            <state relative-caret-position="456">
+              <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+              <folding>
+                <element signature="e#6#128#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -236,12 +238,12 @@
       <updated>1527719085939</updated>
       <workItem from="1527719092768" duration="1848000" />
       <workItem from="1527764004471" duration="29230000" />
-      <workItem from="1528116305033" duration="30355000" />
+      <workItem from="1528116305033" duration="30499000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61433000" />
+    <option name="totallyTimeSpent" value="61577000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -425,8 +427,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/AllTests.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="54" column="2" lean-forward="true" selection-start-line="54" selection-start-column="2" selection-end-line="54" selection-end-column="2" />
+        <state relative-caret-position="456">
+          <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+          <folding>
+            <element signature="e#6#128#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

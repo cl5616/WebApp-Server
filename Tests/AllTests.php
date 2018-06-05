@@ -1,9 +1,10 @@
 <?php
-
+/*
 require_once "database.php";
 require_once "addpost.php";
 require_once "getposts.php";
 require_once "addcomment.php";
+*/
 
 
 use PHPUnit\Framework\TestCase;
