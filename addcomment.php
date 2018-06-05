@@ -1,8 +1,8 @@
 #!/usr/bin/php
 <?php
-    require "database.php";
-    require "session.php";
-    require "PostContent.php";
+    require_once "database.php";
+    require_once "session.php";
+    require_once "PostContent.php";
     class CommentUploader extends ContentUploader
     {
         private $msg_id;

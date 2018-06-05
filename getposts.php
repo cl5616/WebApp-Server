@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
-    require "database.php";
-    require "session.php";
+    require_once "database.php";
+    require_once "session.php";
 
     class PostGetter
     {

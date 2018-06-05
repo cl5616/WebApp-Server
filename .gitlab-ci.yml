@@ -15,19 +15,19 @@ test:5.6:
   stage: test
   image: php:5.6
   script:
-  - phpunit Tests/postTests
+  - phpunit Tests/AllTests
 
 # We test PHP7.0
 test:7.0:
   stage: test
   image: php:7.0
   script:
-  - phpunit Tests/postTests
+  - phpunit Tests/AllTests
 
 deployment:
   stage: deploy
   script:
-  - ssh cl5616@shell2.doc.ic.ac.uk "rm -rf /vol/project/2017/271/g1727111/WebAppsServer"  
+  - ssh cl5616@shell2.doc.ic.ac.uk "rm -rf /vol/project/2017/271/g1727111/WebAppsServer"
   - scp -o StrictHostKeyChecking=no -r /home/gitlab-runner/builds/b95d5946/0/hr1316/WebAppsServer cl5616@shell2.doc.ic.ac.uk:/vol/project/2017/271/g1727111
   only:
   - master
