@@ -22,7 +22,7 @@ class RegisterAccount
     {
         if ($this->database->ifEmailExist($this->email))
         {
-            PostGREDatabase::dieWithErrorMsg("email has already been registered");
+            dieWithErrorMsg("email has already been registered");
         }
         else
         {

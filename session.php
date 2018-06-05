@@ -1,6 +1,11 @@
 
 <?php
+require_once "utils.php";
 function getCurUserId()
 {
-    return isset($_SESSION["id"]) ? $_SESSION["id"] : 0;
+    if (!isset($_SESSION["id"]))
+    {
+        dieWithErrorMsg("not login yet");
+    }
+    return $_SESSION["id"];
 }

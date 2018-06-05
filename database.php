@@ -49,13 +49,8 @@ final class PostGREDatabase implements Database
         if (!$this->conn)
         {
             //die directly if there is any error
-            self::dieWithErrorMsg("database connection error, please contact admin");
+            dieWithErrorMsg("database connection error, please contact admin");
         }
-    }
-
-    public static function dieWithErrorMsg($msg)
-    {
-        dieWithErrorMsg($msg);
     }
 
     public function postMsg($content, $category, $user_id)
@@ -98,7 +93,7 @@ final class PostGREDatabase implements Database
         $result = pg_query($this->conn, $query);
         if (!$result)
         {
-            self::dieWithErrorMsg(self::DB_QUERY_PROBLEM);
+            dieWithErrorMsg(self::DB_QUERY_PROBLEM);
         }
         $ret = array();
         while ($row = pg_fetch_row($result))
@@ -114,12 +109,12 @@ final class PostGREDatabase implements Database
         $result = pg_prepare($this->conn,"email_exist" , $query);
         if (!$result)
         {
-            self::dieWithErrorMsg(self::DB_QUERY_PROBLEM);
+            dieWithErrorMsg(self::DB_QUERY_PROBLEM);
         }
         $result = pg_execute($this->conn, "email_exist", array($email));
         if (!$result)
         {
-            self::dieWithErrorMsg(self::DB_QUERY_PROBLEM);
+            dieWithErrorMsg(self::DB_QUERY_PROBLEM);
         }
         if ($row = pg_fetch_row($result))
         {
