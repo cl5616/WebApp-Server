@@ -38,7 +38,6 @@ final class PostGREDatabase implements Database
     private $conn;
     private function __construct()
     {
-        $i = "fuck";
         $this->conn = pg_connect(
             "host=".self::DB_SERVER.
             " dbname=".self::DB_NAME.

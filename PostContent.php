@@ -1,6 +1,6 @@
 
 <?php
-require "utils.php";
+require_once "utils.php";
 abstract class ContentUploader
 {
     protected $content;
