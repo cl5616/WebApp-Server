@@ -14,8 +14,6 @@ interface Database
 final class PostGREDatabase implements Database
 {
     private static $instance = null;
-    const DB_QUERY_PROBLEM = "problem with database query, please try again";
-
     public static function getInstance()
     {
         if (self::$instance === null) {
@@ -23,8 +21,9 @@ final class PostGREDatabase implements Database
         }
         return self::$instance;
     }
-    //singleton database
 
+    //singleton database
+    const DB_QUERY_PROBLEM = "problem with database query, please try again";
     const DB_SERVER = "db.doc.ic.ac.uk";
     const DB_PORT = 5432;
     const DB_USERNAME = "g1727111_u";
@@ -124,11 +123,11 @@ final class PostGREDatabase implements Database
         }
         if ($row = pg_fetch_row($result))
         {
-            return false;
+            return true;
         }
         else
         {
-            return true;
+            return false;
         }
     }
     public function doRegister($email,
@@ -150,5 +149,28 @@ final class PostGREDatabase implements Database
             return false;
         }
         return true;
+    }
+    public function getEmailPswInfo($email)
+    {
+        $query = "SELECT id,password,salt FROM users WHERE email = $1";
+        $result = pg_prepare($this->conn, "login_user", $query);
+        if (!$result)
+        {
+            return false;
+        }
+        $result = pg_execute($this->conn, "login_user", array($email));
+        if (!$result)
+        {
+            return false;
+        }
+        $row = pg_fetch_row($result);
+        if ($row)
+        {
+            return array("id"=>(int)$row[0], "password"=>$row[1], "salt"=>$row[1]);
+        }
+        else
+        {
+            return array();
+        }
     }
 }

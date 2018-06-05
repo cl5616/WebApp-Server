@@ -20,7 +20,8 @@ email, password, nickname, profile, bio, //todo settings
 
 ```sql
 CREATE TABLE users(
-	email varchar(256) PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
+	email varchar(256) NOT NULL UNIQUE,
     password char(64) NOT NULL,
     salt char(64) NOT NULL,
     nickname char(32) NOT NULL,
