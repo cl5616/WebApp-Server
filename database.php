@@ -43,7 +43,8 @@ final class PostGREDatabase implements Database
             " dbname=".self::DB_NAME.
             " user=".self::DB_USERNAME.
             " password=".self::DB_PASSWORD.
-            " port=".self::DB_PORT);
+            " port=".self::DB_PORT.
+            " sslmode=allow");
         //The connection will be closed automatically when the script ends.
         if (!$this->conn)
         {
