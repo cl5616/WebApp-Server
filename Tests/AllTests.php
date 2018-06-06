@@ -1,10 +1,9 @@
 <?php
-/*
 require_once "database.php";
 require_once "addpost.php";
 require_once "getposts.php";
 require_once "addcomment.php";
-*/
+
 
 
 use PHPUnit\Framework\TestCase;
@@ -12,12 +11,12 @@ use PHPUnit\Framework\TestCase;
 class Post_test extends TestCase
 {
 
-  public function test()
+  public function testConnection()
   {
-    $this->assertTrue(True);
+      $db = PostGREDatabase::getInstance();
+      $this->assertTrue(True);
   }
 
-/*
     public function testAddPost()
     {
         $db = $this->createMock(Database::class);
@@ -53,5 +52,5 @@ class Post_test extends TestCase
 
         $commenter->doComment();
     }
-*/
+
 }
