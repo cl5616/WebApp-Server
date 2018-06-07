@@ -15,7 +15,7 @@ test:5.6:
   stage: test
   image: php:5.6
   script:
-  - phpunit Tests/TestOut.php
+  - phpunit Tests/TestOutput.php
   - phpunit Tests/registerTest.php
   - phpunit Tests/loginTest.php
 
@@ -24,7 +24,7 @@ test:7.0:
   stage: test
   image: php:7.0
   script:
-  - phpunit Tests/TestOut.php
+  - phpunit Tests/TestOutput.php
   - phpunit Tests/registerTest.php
   - phpunit Tests/loginTest.php
 
