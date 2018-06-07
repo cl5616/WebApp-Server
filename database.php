@@ -92,6 +92,30 @@ final class PostGREDatabase implements Database
         }
         return true;
     }
+    private static function orderLimitOffset($time_colunm,$offset, $limit)
+    {
+        return " ORDER BY ".$time_colunm." DESC LIMIT ".$limit." OFFSET ".$offset;
+    }
+    public function getComments($msg_id, $offset, $limit)
+    {
+        $query = "SELECT id,poster_id,comment_time,content,reply_id FROM ".
+            self::DB_COMMENTS_TAB." WHERE msg_id=".$msg_id.
+            self::orderLimitOffset("comment_time",$offset, $limit);
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+            return false;
+        $ret = array();
+        while ($row = pg_fetch_row($result))
+        {
+            $one_row = array("id"=>(int)$row[0],
+                "poster_id"=>(int)$row[1],
+                "comment_time"=>$row[2],
+                "content"=>$row[3],
+                "reply_id"=>$row[4]);
+            array_push($ret, $one_row);
+        }
+        return $ret;
+    }
     public function getPosts($category, $offset, $limit)
     {
         if ($category !== null)
@@ -104,7 +128,8 @@ final class PostGREDatabase implements Database
         }
         $query = "SELECT id,user_id,content,picture,anonymous,view_num,like_num,post_time FROM ".
             self::DB_POSTS_TAB.$where.
-        " ORDER BY post_time DESC LIMIT ".$limit." OFFSET ".$offset;
+            self::orderLimitOffset("post_time",$offset, $limit);
+
         $result = pg_query($this->conn, $query);
         if (!$result)
         {
