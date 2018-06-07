@@ -5,7 +5,7 @@ require_once "utils.php";
 
 interface Database
 {
-    public function postMsg($content, $category, $user_id, $picture, $anonymous);
+    public function postMsg($content, $category, $user_id, $picture, $anonymous, $title);
     public function postComment($msg_id, $content, $reply_id, $user_id);
     public function getPosts($category, $offset, $limit);
 }
@@ -56,19 +56,19 @@ final class PostGREDatabase implements Database
         }
     }
 
-    public function postMsg($content, $category, $user_id, $picture, $anonymous)
+    public function postMsg($content, $category, $user_id, $picture, $anonymous, $title)
     {
         $query = "INSERT INTO ".self::DB_POSTS_TAB.
             " (user_id,post_time,picture,content,category,deleted,".
-            "anonymous)".
+            "anonymous,title)".
             " VALUES (".$user_id.",CURRENT_TIMESTAMP,$3,$1,$2,B'0',".
-            self::boolToBit($anonymous).")";
+            self::boolToBit($anonymous).",$4)";
         $result = pg_prepare($this->conn, "post_msg", $query);
         if (!$result)
         {
             return false;
         }//works well when picture===null
-        $result = pg_execute($this->conn, "post_msg", [$content, $category, $picture]);
+        $result = pg_execute($this->conn, "post_msg", [$content, $category, $picture, $title]);
         if (!$result)
         {
             return false;

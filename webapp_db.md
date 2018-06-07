@@ -44,11 +44,10 @@ CREATE TABLE posts(
     post_time timestamp NOT NULL,
     picture varchar(32),
     content text NOT NULL,
+    title varchar(129) NOT NULL,
     category category_t,
     deleted bit NOT NULL,
     anonymous bit NOT NULL,
-    view_num int NOT NULL,
-    like_num int NOT NULL
 )
 ```
 
