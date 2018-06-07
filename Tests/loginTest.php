@@ -9,9 +9,7 @@ class loginTest extends TestCase
   {
     $db = $this->createMock(Database::class);
 
-    $result = array("id"=>(int)$row[0], "password"=>$row[1], "salt"=>$row[1]);
-    $result["id"] = 1;
-    $result["salt"] = "salt";
+    $result = array("id"=>1, "password"=>"password", "salt"=>"salt");
     $hash = hash("sha256", "password".$result["salt"]);
     $result["password"] = $hash;
 
