@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-require_once "/vol/project/2017/271/g1727111/WebAppsServer/Classes/Class_register.php";
+require_once "./Classes/Class_register.php";
 
 /*/test-------
 $_POST["password"] = "password";
