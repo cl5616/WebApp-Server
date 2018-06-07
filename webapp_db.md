@@ -37,12 +37,12 @@ id, poster userid, timestamp, picture(ref), content, category, deleted,  anonymo
 
 ```sql
 -- user_id,post_time,picture,content,category,deleted,anonymous,view_num,like_num
-CREATE TYPE category_t AS ENUM ('todo');
+CREATE TYPE category_t AS ENUM('clubs','market','job','academy','social');
 CREATE TABLE posts(
 	id SERIAL PRIMARY KEY,
     user_id int NOT NULL,
     post_time timestamp NOT NULL,
-    picture char(12),
+    picture varchar(32),
     content text NOT NULL,
     category category_t,
     deleted bit NOT NULL,
@@ -50,6 +50,20 @@ CREATE TABLE posts(
     view_num int NOT NULL,
     like_num int NOT NULL
 )
+```
+
+## relation
+
+```sql
+CREATE TABLE like_relation(
+	msg_id int NOT NULL,
+    user_id int NOT NULL
+);
+
+CREATE TABLE view_relation(
+	msg_id int NOT NULL,
+    user_id int NOT NULL
+);
 ```
 
 
