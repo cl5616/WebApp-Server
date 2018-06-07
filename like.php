@@ -3,12 +3,12 @@ require_once "database.php";
 require_once "increment.php";
 
 //test--------
-$_POST["post_id"] = "11";
+$_POST["post_id"] = "13";
 //test--------
 
 dieIfEmpty($_POST, "post_id");
 $post_id = toNum($_POST, "post_id");
 
 $like = new IncrementPost($post_id,
-    PostGREDatabase::getInstance(), "like_num");
+    PostGREDatabase::getInstance(), "like");
 $like->doAdd();

@@ -2,10 +2,10 @@
 <?php
     require_once "./Classes/Class_getposts.php";
 
-    /*/test-------
+    //test-------
 $_GET["offset"] = 0;
-$_GET["limit"] = 10;
-$_GET["category"] = "social";
+$_GET["limit"] = 30;
+//$_GET["category"] = "social";
     //test-------*/
     $offset = toNum($_GET, "offset");
     $limit = toNum($_GET, "limit");

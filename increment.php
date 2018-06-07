@@ -1,4 +1,5 @@
 <?php
+require_once "session.php";
 class IncrementPost
 {
     private $post_id;
@@ -13,7 +14,8 @@ class IncrementPost
     }
     public function doAdd()
     {
-        $this->database->addOne($this->post_id, $this->column);
+        returnJsonStatus($this->database->addOne(getCurUserId(),
+            $this->post_id, $this->column));
     }
 }
 

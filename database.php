@@ -60,9 +60,9 @@ final class PostGREDatabase implements Database
     {
         $query = "INSERT INTO ".self::DB_POSTS_TAB.
             " (user_id,post_time,picture,content,category,deleted,".
-            "anonymous,view_num,like_num)".
+            "anonymous)".
             " VALUES (".$user_id.",CURRENT_TIMESTAMP,$3,$1,$2,B'0',".
-            self::boolToBit($anonymous).",0,0)";
+            self::boolToBit($anonymous).")";
         $result = pg_prepare($this->conn, "post_msg", $query);
         if (!$result)
         {
@@ -92,9 +92,9 @@ final class PostGREDatabase implements Database
         }
         return true;
     }
-    private static function orderLimitOffset($time_colunm,$offset, $limit)
+    private static function orderLimitOffset($time_column, $offset, $limit)
     {
-        return " ORDER BY ".$time_colunm." DESC LIMIT ".$limit." OFFSET ".$offset;
+        return " ORDER BY ".$time_column." DESC LIMIT ".$limit." OFFSET ".$offset;
     }
     public function getComments($msg_id, $offset, $limit)
     {
@@ -116,6 +116,17 @@ final class PostGREDatabase implements Database
         }
         return $ret;
     }
+    private function getRelationCounter($msg_id, $counter_name)
+    {
+        $query = "SELECT COUNT(*) FROM ".$counter_name.
+            "_relation WHERE msg_id=".$msg_id;
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+            return false;
+        $row = pg_fetch_row($result);
+        return (int)$row[0];
+    }
+
     public function getPosts($category, $offset, $limit)
     {
         if ($category !== null)
@@ -126,7 +137,7 @@ final class PostGREDatabase implements Database
         {
             $where = " WHERE deleted=B'0'";
         }
-        $query = "SELECT id,user_id,content,picture,anonymous,view_num,like_num,post_time FROM ".
+        $query = "SELECT id,user_id,content,picture,anonymous,post_time FROM ".
             self::DB_POSTS_TAB.$where.
             self::orderLimitOffset("post_time",$offset, $limit);
 
@@ -146,21 +157,26 @@ final class PostGREDatabase implements Database
             {
                 $user_id = (int)$row[1];
             }
-            $one_row = array("msg_id"=>(int)$row[0],
+            $msg_id = (int)$row[0];
+            $one_row = array("msg_id"=>$msg_id,
                 "poster_id"=>$user_id,
                 "content"=>$row[2],
                 "picture"=>$row[3],
-                "view_num"=>(int)$row[5],
-                "like_num"=>(int)$row[6],
-                "post_time"=>$row[7]);
+                "view_num"=>$this->getRelationCounter($msg_id, "view"),
+                "like_num"=>$this->getRelationCounter($msg_id, "like"),
+                "post_time"=>$row[5]);
             array_push($ret, $one_row);
         }
         return $ret;
     }
-    public function addOne($post_id, $column)
+    public function addOne($user_id, $post_id, $count_name)
     {
-        $query = "UPDATE ".self::DB_POSTS_TAB.
-            " SET ".$column."=".$column."+1 WHERE id=".$post_id;
+        $query = "DO\n \$do\$\n BEGIN";
+        $query .= " IF NOT EXISTS (SELECT * FROM ".$count_name."_relation".
+            " WHERE msg_id=".$post_id." and user_id=".$user_id.") THEN";
+        $query .= " INSERT INTO ".$count_name.
+            "_relation (msg_id,user_id) VALUES (".$post_id.", ".$user_id.");";
+        $query .= "END IF; END\n\$do\$";
         $result = pg_query($this->conn, $query);
         if (!$result)
             return false;
