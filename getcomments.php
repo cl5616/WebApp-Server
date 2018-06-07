@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 require "./Classes/Class_getcomment.php";
 
