@@ -11,7 +11,7 @@ interface Database
     public function ifEmailExist($email);
     public function doRegister($email, $password_hash, $salt, $nickname, $introduction);
     public function getEmailPswInfo($email);
-
+    public function getComments($msg_id, $offset, $limit);
 }
 
 

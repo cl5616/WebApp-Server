@@ -1,5 +1,7 @@
 <?php
 require_once "./Classes/Class_addpost.php";
+use PHPUnit\Framework\TestCase;
+
 
 class addPostTest extends TestCase
 {
@@ -7,17 +9,25 @@ class addPostTest extends TestCase
   {
     $db = $this->createMock(Database::class);
 
-    $result = array("id"=>(int)$row[0], "password"=>$row[1], "salt"=>$row[1]);
-    $result["id"] = 1;
-    $result["salt"] = "salt";
-    $hash = hash("sha256", "password".$result["salt"]);
-    $result["password"] = $hash;
+    $_POST["category"]= "social";
+    $_POST["content"]="hello world with pic";
+    $_POST["picture"]="aaa.jpg";
+    $_POST["anonymous"]="1";
 
-    $db->expects($this->once())->method('getEmailPswInfo')->with("test@example.com")->willReturn($result);
+    dieIfEmpty($_POST, "category");
+    dieIfInvalidCategory($_POST["category"]);
+    $content = emptyIfNotSet($_POST,"content");
+    $title = emptyIfNotSet($_POST,"title");
+    $picture = nullIfNotSet($_POST, "picture");
+    $anonymous = emptyIfNotSet($_POST, "anonymous");
 
-    $login = new Login("test@example.com", "password", $db);
+    $uploader = new PostUploader($_POST["category"], $content,
+        $picture, $anonymous, $title, $db);
 
-    $login->doLogin();
+    $db->expects($this->once())->method('postMsg')->with($content,
+     $_POST["category"], getCurUserId(), $picture, $anonymous, $title)->willReturn(True);
+
+    $uploader->doPost();
   }
 }
 

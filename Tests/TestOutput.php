@@ -1,19 +1,13 @@
 <?php
 
 require_once "./Classes/Class_register.php";
-#require_once "./Classes/Class_login.php";
+require_once "./Classes/Class_addcomment.php";
 
 
 use PHPUnit\Framework\TestCase;
 
 class All_Test extends TestCase
 {
-
-  public function test()
-  {
-    $this->assertTrue(True);
-  }
-
   public function testRegister()
   {
     ob_start();
@@ -29,41 +23,39 @@ class All_Test extends TestCase
     $result = ob_get_clean();
     $this->assertEquals($result, '{"status":true}');
   }
-/*
-    public function testAddPost()
-    {
-        $db = $this->createMock(Database::class);
+  public function testAddPost()
+  {
+    ob_start();
+    include_once 'addPostTest.php';
+    $result = ob_get_clean();
+    $this->assertEquals($result, '{"status":true}');
+  }
 
-        $uploader = new PostUploader('category', 'content', $db);
+  public function testAddComment()
+  {
+    ob_start();
+    include_once 'addCommentTest.php';
+    $result = ob_get_clean();
+    $this->assertEquals($result, '{"status":true}');
+  }
 
-        $db->expects($this->once())->method('postMsg')->with('content','category', 1)->willReturn('Hello');
+  public function testGetPost()
+  {
+    ob_start();
+    include_once 'getpostsTest.php';
+    $result = ob_get_clean();
+    $expect = '[{"msg_id":"1","poster_id":"2","content":"content","picture"'.
+      ':"picture","view_num":"1","like_num":"1","post_time":"1","title":"picture"}]';
+    $this->assertEquals($result, $expect);
+  }
 
-        $uploader->doPost();
-
-    }
-
-    public function testGetPost()
-    {
-        $db = $this->createMock(Database::class);
-
-        $getter = new PostGetter('category', 'content', $db);
-
-        $db->expects($this->once())->method('getPosts')->with(1);
-
-        $getter->getPosts();
-
-    }
-
-    public function testAddComment()
-    {
-
-        $db = $this->createMock(Database::class);
-
-        $commenter = new CommentUploader('id', 'content', 'reply', $db);
-
-        $db->expects($this->once())->method('postComment')->with('id', 'content', 'reply', 1);
-
-        $commenter->doComment();
-    }
-*/
+  public function testGetComment()
+  {
+    ob_start();
+    include_once 'getcommentTest.php';
+    $result = ob_get_clean();
+    $expect = '[{"msg_id":11,"poster_id":1,"content":1,"picture":1,'.
+      '"view_num":1,"like_num":1,"post_time":1,"title":1}]';
+    $this->assertEquals($result, $expect);
+  }
 }
