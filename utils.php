@@ -16,7 +16,7 @@ function dieWithErrorMsg($msg)
     {
         if (!isset($map[$key]) || strlen($map[$key]) == 0)
             dieWithErrorMsg(
-                "argument \"".$key."\" cannot be empty");
+                "argument \\\"".$key."\\\" cannot be empty");
     }
 
     function emptyIfNotSet($map, $key)
