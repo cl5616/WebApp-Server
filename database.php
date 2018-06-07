@@ -141,7 +141,7 @@ final class PostGREDatabase implements Database
         {
             $where = " WHERE deleted=B'0'";
         }
-        $query = "SELECT id,user_id,content,picture,anonymous,post_time FROM ".
+        $query = "SELECT id,user_id,content,picture,anonymous,post_time,title FROM ".
             self::DB_POSTS_TAB.$where.
             self::orderLimitOffset("post_time",$offset, $limit);
 
@@ -168,7 +168,8 @@ final class PostGREDatabase implements Database
                 "picture"=>$row[3],
                 "view_num"=>$this->getRelationCounter($msg_id, "view"),
                 "like_num"=>$this->getRelationCounter($msg_id, "like"),
-                "post_time"=>$row[5]);
+                "post_time"=>$row[5],
+                "title"=>$row[6]);
             array_push($ret, $one_row);
         }
         return $ret;
