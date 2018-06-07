@@ -29,7 +29,10 @@ function returnPicInfoJson($filename)
 }
 
 
-dieIfEmpty($_FILES, "picture");
+if(!isset($_FILES["picture"]))
+{
+    dieWithErrorMsg("picture not set");
+}
 
 $tmp_path = $_FILES["picture"]["tmp_name"];
 $ext = pathinfo($tmp_path, PATHINFO_EXTENSION);
