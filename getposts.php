@@ -2,7 +2,7 @@
 <?php
     require_once "./Classes/Class_getposts.php";
 
-    //test-------
+    /*/test-------
 $_GET["offset"] = 0;
 $_GET["limit"] = 30;
 //$_GET["category"] = "social";
