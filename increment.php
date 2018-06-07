@@ -11,7 +11,7 @@ class IncrementPost
         $this->database = $database;
         $this->column = $column;
     }
-    public function doLike()
+    public function doAdd()
     {
         $this->database->addOne($this->post_id, $this->column);
     }

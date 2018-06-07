@@ -23,6 +23,11 @@ function getImgName($imgType, $imgId, $ext)
     return $name;
 }
 
+function returnPicInfoJson($filename)
+{
+    echo "{\"status\":true,\"filename\":\"".$filename."\"}";
+}
+
 
 dieIfEmpty($_FILES, "picture");
 
@@ -40,14 +45,15 @@ if ($_FILES["picture"]["size"] > MAX_IMG_SIZE)
 dieIfEmpty($_POST, "type");
 dieIfEmpty($_POST, "id");
 
-$imgFilePath = "pic/".getImgName((int)$_POST["type"], (int)$_POST["id"], $ext);
+$imgName = getImgName((int)$_POST["type"], (int)$_POST["id"], $ext);
+$imgFilePath = "pic/".$imgName;
 if (file_exists($imgFilePath))
 {
     dieWithErrorMsg("image already exist");
 }
 if (move_uploaded_file($tmp_path, $imgFilePath))
 {
-    returnJsonStatus(true);
+    returnPicInfoJson($imgName);
 }
 else
 {
