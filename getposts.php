@@ -5,6 +5,7 @@
     //test-------
 $_GET["offset"] = 0;
 $_GET["limit"] = 10;
+$_GET["category"] = "social";
 
     //test-------
     $offset = toNum($_GET, "offset");
