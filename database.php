@@ -157,6 +157,17 @@ final class PostGREDatabase implements Database
         }
         return $ret;
     }
+    public function addOne($post_id, $column)
+    {
+        $query = "UPDATE ".self::DB_POSTS_TAB.
+            " SET ".$column."=".$column."+1 WHERE id=".$post_id;
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+            return false;
+        else
+            return true;
+
+    }
     public function ifEmailExist($email)
     {
         $query = "SELECT email FROM users WHERE email = $1";

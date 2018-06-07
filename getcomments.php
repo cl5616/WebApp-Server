@@ -2,11 +2,11 @@
 <?php
 require "./Classes/Class_getcomment.php";
 
-//test----------
+/*/test----------
 $_GET["msg_id"] = "11";
 $_GET["offset"] = 0;
 $_GET["limit"] = 10;
-//test----------
+//test----------*/
 
 dieIfEmpty($_GET, "msg_id");
 $offset = toNum($_GET, "offset");

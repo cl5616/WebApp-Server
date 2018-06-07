@@ -11,7 +11,7 @@ $_POST["email"] = "wrong@email.com";
 $_POST["password"] = "password";//*/
 
 
-//password incorrect
+/*/password incorrect
 $_POST["email"] = "test@email.com";
 $_POST["password"] = "wrong password";//*/
 

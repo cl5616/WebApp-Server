@@ -5,11 +5,11 @@
 
     $db = PostGREDatabase::getInstance();
 
-    //test------------
+    /*/test------------
     $_POST["msg_id"] = "11";
     $_POST["content"] = "reply 17 under same post";
     $_POST["reply_id"] = "17";
-    //test------------
+    //test------------*/
 
     dieIfEmpty($_POST, "msg_id");
     $msg_id = intval($_POST["msg_id"]);

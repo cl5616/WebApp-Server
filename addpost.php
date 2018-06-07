@@ -4,12 +4,12 @@
 
     $db = PostGREDatabase::getInstance();
 
-    //test--------
+    /*/test--------
     $_POST["category"]= "social";
     $_POST["content"]="hello world with pic";
     $_POST["picture"]="aaa.jpg";
     $_POST["anonymous"]="1";
-    //test--------
+    //test--------*/
 
     dieIfEmpty($_POST, "category");
     dieIfInvalidCategory($_POST["category"]);
