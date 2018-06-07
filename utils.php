@@ -8,7 +8,7 @@ function dieWithErrorMsg($msg)
     function returnJsonStatus($ret)
     {
         $ret = $ret ? "true" : "false";
-        $error_msg = $ret ? "" : ",\"error\":\"database insert error\"";
+        $error_msg = $ret ? "" : ",\"error\":\"database error\"";
         echo "{\"status\":".$ret.$error_msg."}";
     }
 

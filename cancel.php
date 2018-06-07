@@ -1,6 +1,6 @@
 <?php
 require_once "session.php";
-class IncrementPost
+class Canceller
 {
     private $post_id;
     private $database;
@@ -14,8 +14,7 @@ class IncrementPost
     }
     public function doAdd()
     {
-        returnJsonStatus($this->database->addOne(getCurUserId(),
+        returnJsonStatus($this->database->cancel(getCurUserId(),
             $this->post_id, $this->counter_name));
     }
 }
-

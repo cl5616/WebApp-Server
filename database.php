@@ -184,6 +184,16 @@ final class PostGREDatabase implements Database
             return true;
 
     }
+    public function cancel($user_id, $post_id, $count_name)
+    {
+        $query = "DELETE FROM ".$count_name."_relation WHERE msg_id="
+            .$post_id." and user_id=".$user_id;
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+            return false;
+        else
+            return true;
+    }
     public function ifEmailExist($email)
     {
         $query = "SELECT email FROM users WHERE email = $1";
