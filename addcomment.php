@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-    require_once "Class_addcomment.php"
+    require_once "./Classes/Class_addcomment.php";
 
 
     $db = PostGREDatabase::getInstance();

@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
-    require_once "Class_addpost.php";
-
+    require_once "./Classes/Class_addpost.php";
+/*
     $db = PostGREDatabase::getInstance();
 
     //test--------
@@ -20,3 +20,4 @@
     $uploader = new PostUploader($_POST["category"], $content,
         $picture, $anonymous, $db);
     $uploader->doPost();
+*/

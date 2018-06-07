@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-    require_once "Class_getposts.php"
+    require_once "./Classes/Class_getposts.php";
 
     //test-------
 $_GET["offset"] = 0;

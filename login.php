@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-require_once "Class_login.php"
+require_once "./Classes/Class_login.php";
 //test-----
 /*/login success
 $_POST["email"] = "test@email.com";
