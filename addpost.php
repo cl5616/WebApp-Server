@@ -13,10 +13,11 @@
 
     dieIfEmpty($_POST, "category");
     dieIfInvalidCategory($_POST["category"]);
-    $content = emptyIfNotSet($_POST,"content");
+$content = emptyIfNotSet($_POST,"content");
+$title = emptyIfNotSet($_POST,"title");
     $picture = nullIfNotSet($_POST, "picture");
     $anonymous = emptyIfNotSet($_POST, "anonymous");
 
     $uploader = new PostUploader($_POST["category"], $content,
-        $picture, $anonymous, $db);
+        $picture, $anonymous, $title, $db);
     $uploader->doPost();

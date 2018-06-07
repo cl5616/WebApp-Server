@@ -5,7 +5,7 @@ require_once "utils.php";
 
 interface Database
 {
-    public function postMsg($content, $category, $user_id, $picture, $anonymous);
+    public function postMsg($content, $category, $user_id, $picture, $anonymous, $title);
     public function postComment($msg_id, $content, $reply_id, $user_id);
     public function getPosts($category, $offset, $limit);
     public function ifEmailExist($email);
@@ -60,19 +60,19 @@ final class PostGREDatabase implements Database
         }
     }
 
-    public function postMsg($content, $category, $user_id, $picture, $anonymous)
+    public function postMsg($content, $category, $user_id, $picture, $anonymous, $title)
     {
         $query = "INSERT INTO ".self::DB_POSTS_TAB.
             " (user_id,post_time,picture,content,category,deleted,".
-            "anonymous)".
+            "anonymous,title)".
             " VALUES (".$user_id.",CURRENT_TIMESTAMP,$3,$1,$2,B'0',".
-            self::boolToBit($anonymous).")";
+            self::boolToBit($anonymous).",$4)";
         $result = pg_prepare($this->conn, "post_msg", $query);
         if (!$result)
         {
             return false;
         }//works well when picture===null
-        $result = pg_execute($this->conn, "post_msg", [$content, $category, $picture]);
+        $result = pg_execute($this->conn, "post_msg", [$content, $category, $picture, $title]);
         if (!$result)
         {
             return false;
@@ -141,7 +141,7 @@ final class PostGREDatabase implements Database
         {
             $where = " WHERE deleted=B'0'";
         }
-        $query = "SELECT id,user_id,content,picture,anonymous,post_time FROM ".
+        $query = "SELECT id,user_id,content,picture,anonymous,post_time,title FROM ".
             self::DB_POSTS_TAB.$where.
             self::orderLimitOffset("post_time",$offset, $limit);
 
@@ -168,7 +168,8 @@ final class PostGREDatabase implements Database
                 "picture"=>$row[3],
                 "view_num"=>$this->getRelationCounter($msg_id, "view"),
                 "like_num"=>$this->getRelationCounter($msg_id, "like"),
-                "post_time"=>$row[5]);
+                "post_time"=>$row[5],
+                "title"=>$row[6]);
             array_push($ret, $one_row);
         }
         return $ret;
