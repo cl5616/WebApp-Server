@@ -26,7 +26,7 @@ class All_Test extends TestCase
   public function testAddPost()
   {
     ob_start();
-    include_once 'addPostTest.php';
+    include_once 'addpostTest.php';
     $result = ob_get_clean();
     $this->assertEquals($result, '{"status":true}');
   }
