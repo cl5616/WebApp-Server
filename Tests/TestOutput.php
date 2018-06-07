@@ -1,13 +1,7 @@
 <?php
-/*
-require_once "database.php";
-require_once "addpost.php";
-require_once "getposts.php";
-require_once "addcomment.php";
-*/
 
 require_once "./Classes/Class_register.php";
-require_once "./Classes/Class_login.php";
+#require_once "./Classes/Class_login.php";
 
 
 use PHPUnit\Framework\TestCase;
@@ -20,15 +14,20 @@ class All_Test extends TestCase
     $this->assertTrue(True);
   }
 
-  public function testRegisterAndLogin()
+  public function testRegister()
   {
-    $_POST["database"] = $this->createMock(Database::class);
-    $_POST["email"] = "test@example.com";
-    $_POST["password"] = "password";
-    $_POST["nickname"] = "tom";
-    require "registerTest.php";
-    $file = file_get_contents('https://www.doc.ic.ac.uk/project/2017/271/g1727111/WebAppsServer/Tests/registerTest.php');
-    $this->assertEquals($file, "");
+    ob_start();
+    include_once 'registerTest.php';
+    $result = ob_get_clean();
+    $this->assertEquals($result, '{"status":true}');
+  }
+
+  public function testLogin()
+  {
+    ob_start();
+    include_once 'loginTest.php';
+    $result = ob_get_clean();
+    $this->assertEquals($result, '{"status":true}');
   }
 /*
     public function testAddPost()

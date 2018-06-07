@@ -15,16 +15,18 @@ test:5.6:
   stage: test
   image: php:5.6
   script:
-#  - phpunit Tests/AllTests
-  - pwd
+  - phpunit Tests/TestOut.php
+  - phpunit Tests/registerTest.php
+  - phpunit Tests/loginTest.php
 
 # We test PHP7.0
 test:7.0:
   stage: test
   image: php:7.0
   script:
-#  - phpunit Tests/AllTests
-  - pwd
+  - phpunit Tests/TestOut.php
+  - phpunit Tests/registerTest.php
+  - phpunit Tests/loginTest.php
 
 deployment:
   stage: deploy
