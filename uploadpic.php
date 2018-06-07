@@ -36,6 +36,7 @@ if(!isset($_FILES["picture"]))
 
 $tmp_path = $_FILES["picture"]["tmp_name"];
 $ext = pathinfo($tmp_path, PATHINFO_EXTENSION);
+echo $tmp_path;
 echo $ext;
 if (!isImgExtension($ext))
 {
