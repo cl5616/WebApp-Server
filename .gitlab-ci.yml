@@ -15,16 +15,27 @@ test:5.6:
   stage: test
   image: php:5.6
   script:
-#  - phpunit Tests/AllTests
-  - pwd
+  - phpunit Tests/TestOutput.php
+  - phpunit Tests/registerTest.php
+  - phpunit Tests/loginTest.php
+  - phpunit Tests/addpostTest.php
+  - phpunit Tests/addcommentTest.php
+  - phpunit Tests/getcommentTest.php
+  - phpunit Tests/getpostsTest.php
 
 # We test PHP7.0
 test:7.0:
   stage: test
   image: php:7.0
   script:
-#  - phpunit Tests/AllTests
-  - pwd
+  - phpunit Tests/TestOutput.php
+  - phpunit Tests/registerTest.php
+  - phpunit Tests/loginTest.php
+  - phpunit Tests/addpostTest.php
+  - phpunit Tests/addcommentTest.php
+  - phpunit Tests/getcommentTest.php
+  - phpunit Tests/getpostsTest.php
+
 
 deployment:
   stage: deploy

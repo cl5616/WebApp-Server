@@ -9,9 +9,9 @@ interface Database
     public function postComment($msg_id, $content, $reply_id, $user_id);
     public function getPosts($category, $offset, $limit);
     public function ifEmailExist($email);
-    public function doRegister($email,
-                               $password_hash, $salt,
-                               $nickname, $introduction);
+    public function doRegister($email, $password_hash, $salt, $nickname, $introduction);
+    public function getEmailPswInfo($email);
+    public function getComments($msg_id, $offset, $limit);
 }
 
 
