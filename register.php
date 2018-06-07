@@ -37,11 +37,11 @@ class RegisterAccount
     }
 }
 
-//test-------
+/*/test-------
 $_POST["password"] = "password";
 $_POST["email"] = "test@email.com";
 $_POST["nickname"] = "test";
-//test-------
+//test-------*/
 
 dieIfEmpty($_POST, "password");
 dieIfEmpty($_POST, "email");

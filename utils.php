@@ -24,6 +24,11 @@ function dieWithErrorMsg($msg)
         return isset($map[$key]) ? $map[$key] : "";
     }
 
+    function nullIfNotSet($map, $key)
+    {
+       return isset($map[$key]) ? $map[$key] : null;
+    }
+
     function encodeNum($num, $num_bytes)
     {
         $ret = "";
@@ -37,4 +42,20 @@ function dieWithErrorMsg($msg)
         $enc = str_replace("/", "-", $enc);
         $enc = str_replace("=", "", $enc);
         return $enc;
+    }
+
+    function toNum($map, $key)
+    {
+        return isset($map[$key]) ? (int)$map[$key] : 0;
+    }
+
+    function dieIfInvalidCategory($category)
+    {
+        if (strcmp($category, "clubs") == 0 ||
+            strcmp($category, "market") == 0 ||
+            strcmp($category, "job") == 0 ||
+            strcmp($category, "academy") == 0 ||
+            strcmp($category, "social") == 0)
+                return;
+        else dieWithErrorMsg("invalid category");
     }

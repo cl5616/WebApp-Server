@@ -5,14 +5,18 @@ require_once "utils.php";
 
 interface Database
 {
-    public function postMsg($content, $category, $user_id);
+    public function postMsg($content, $category, $user_id, $picture, $anonymous);
     public function postComment($msg_id, $content, $reply_id, $user_id);
-    public function getPosts();
+    public function getPosts($category, $offset, $limit);
 }
 
 
 final class PostGREDatabase implements Database
 {
+    private static function boolToBit($b)
+    {
+        return $b ? "B'1'" : "B'0'";
+    }
     private static $instance = null;
     public static function getInstance()
     {
@@ -52,17 +56,19 @@ final class PostGREDatabase implements Database
         }
     }
 
-    public function postMsg($content, $category, $user_id)
+    public function postMsg($content, $category, $user_id, $picture, $anonymous)
     {
         $query = "INSERT INTO ".self::DB_POSTS_TAB.
-            " (user_id,post_time,picture,content,category,deleted,anonymous,view_num,like_num)".
-            " VALUES (".$user_id.",CURRENT_TIMESTAMP,'todo',$1,$2,B'0',B'0',0,0)";
+            " (user_id,post_time,picture,content,category,deleted,".
+            "anonymous,view_num,like_num)".
+            " VALUES (".$user_id.",CURRENT_TIMESTAMP,$3,$1,$2,B'0',".
+            self::boolToBit($anonymous).",0,0)";
         $result = pg_prepare($this->conn, "post_msg", $query);
         if (!$result)
         {
             return false;
-        }
-        $result = pg_execute($this->conn, "post_msg", [$content, $category]);
+        }//works well when picture===null
+        $result = pg_execute($this->conn, "post_msg", [$content, $category, $picture]);
         if (!$result)
         {
             return false;
@@ -86,9 +92,19 @@ final class PostGREDatabase implements Database
         }
         return true;
     }
-    public function getPosts()
+    public function getPosts($category, $offset, $limit)
     {
-        $query = "SELECT id,user_id,content,picture FROM ".self::DB_POSTS_TAB;
+        if ($category !== null)
+        {
+            $where = " WHERE category='".$category."' and deleted=B'0'";
+        }
+        else
+        {
+            $where = " WHERE deleted=B'0'";
+        }
+        $query = "SELECT id,user_id,content,picture,anonymous,view_num,like_num,post_time FROM ".
+            self::DB_POSTS_TAB.$where.
+        " ORDER BY post_time DESC LIMIT ".$limit." OFFSET ".$offset;
         $result = pg_query($this->conn, $query);
         if (!$result)
         {
@@ -97,10 +113,21 @@ final class PostGREDatabase implements Database
         $ret = array();
         while ($row = pg_fetch_row($result))
         {
+            if (strcmp($row[4], "1") === 0)
+            {
+                $user_id = 0;
+            }
+            else
+            {
+                $user_id = (int)$row[1];
+            }
             $one_row = array("msg_id"=>(int)$row[0],
-                "poster_id"=>(int)$row[1],
+                "poster_id"=>$user_id,
                 "content"=>$row[2],
-                "picture"=>$row[3]);
+                "picture"=>$row[3],
+                "view_num"=>(int)$row[5],
+                "like_num"=>(int)$row[6],
+                "post_time"=>$row[7]);
             array_push($ret, $one_row);
         }
         return $ret;
