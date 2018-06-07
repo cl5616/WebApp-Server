@@ -8,6 +8,10 @@ interface Database
     public function postMsg($content, $category, $user_id, $picture, $anonymous, $title);
     public function postComment($msg_id, $content, $reply_id, $user_id);
     public function getPosts($category, $offset, $limit);
+    public function ifEmailExist($email);
+    public function doRegister($email,
+                               $password_hash, $salt,
+                               $nickname, $introduction);
 }
 
 
