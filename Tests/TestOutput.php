@@ -34,7 +34,7 @@ class All_Test extends TestCase
   public function testAddComment()
   {
     ob_start();
-    include_once 'addCommentTest.php';
+    include_once 'addcommentTest.php';
     $result = ob_get_clean();
     $this->assertEquals($result, '{"status":true}');
   }
