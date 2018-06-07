@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-require_once "./Classes/Class_register.php";
+require_once "../../Classes/Class_register.php";
 
 /*/test-------
 $_POST["password"] = "password";
