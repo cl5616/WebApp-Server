@@ -34,10 +34,9 @@ if(!isset($_FILES["picture"]))
     dieWithErrorMsg("picture not set");
 }
 
-$tmp_path = $_FILES["picture"]["tmp_name"];
-$ext = pathinfo($tmp_path, PATHINFO_EXTENSION);
-echo $tmp_path;
-echo $ext;
+$tmp_filename = $_FILES["picture"]["tmp_name"];
+$ext = pathinfo($_FILES["picture"]["name"], PATHINFO_EXTENSION);
+
 if (!isImgExtension($ext))
 {
     dieWithErrorMsg("image extension invalid");
@@ -56,7 +55,7 @@ if (file_exists($imgFilePath))
 {
     dieWithErrorMsg("image already exist");
 }
-if (move_uploaded_file($tmp_path, $imgFilePath))
+if (move_uploaded_file($tmp_filename, $imgFilePath))
 {
     returnPicInfoJson($imgName);
 }
