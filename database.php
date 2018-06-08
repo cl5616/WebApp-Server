@@ -7,7 +7,7 @@ interface Database
 {
     public function postMsg($content, $category, $user_id, $picture, $anonymous, $title);
     public function postComment($msg_id, $content, $reply_id, $user_id);
-    public function getPosts($category, $offset, $limit);
+    public function getPosts($category, $offset, $limit, $order_column);
     public function ifEmailExist($email);
     public function doRegister($email, $password_hash, $salt, $nickname, $introduction);
     public function getEmailPswInfo($email);
@@ -96,9 +96,10 @@ final class PostGREDatabase implements Database
         }
         return true;
     }
-    private static function orderLimitOffset($time_column, $offset, $limit)
+    private static function orderLimitOffset($order_column, $offset, $limit)
     {
-        return " ORDER BY ".$time_column." DESC LIMIT ".$limit." OFFSET ".$offset;
+        $order_by = $order_column == null ? "" : " ORDER BY ".$order_column." DESC";
+        return $order_by." LIMIT ".$limit." OFFSET ".$offset;
     }
     public function getComments($msg_id, $offset, $limit)
     {
@@ -130,8 +131,12 @@ final class PostGREDatabase implements Database
         $row = pg_fetch_row($result);
         return (int)$row[0];
     }
+    private static function cmp_like($a, $b)
+    {
+        return $b["like_num"] - $a["like_num"];
+    }
 
-    public function getPosts($category, $offset, $limit)
+    public function getPosts($category, $offset, $limit, $order_column)
     {
         if ($category !== null)
         {
@@ -143,7 +148,7 @@ final class PostGREDatabase implements Database
         }
         $query = "SELECT id,user_id,content,picture,anonymous,post_time,title FROM ".
             self::DB_POSTS_TAB.$where.
-            self::orderLimitOffset("post_time",$offset, $limit);
+            self::orderLimitOffset($order_column, $offset, $limit);
 
         $result = pg_query($this->conn, $query);
         if (!$result)
@@ -171,6 +176,10 @@ final class PostGREDatabase implements Database
                 "post_time"=>$row[5],
                 "title"=>$row[6]);
             array_push($ret, $one_row);
+        }
+        if ($order_column == null)
+        {
+            usort($ret, "self::cmp_like");
         }
         return $ret;
     }

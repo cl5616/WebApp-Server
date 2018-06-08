@@ -8,17 +8,31 @@ class PostGetter
     private $database;
     private $offset;
     private $limit;
+    private $sort;
 
-    public function __construct($category, $offset, $limit, $database)
+    public function __construct($category, $offset, $limit, $sort, $database)
     {
         $this->category = $category;
         $this->database = $database;
         $this->offset = $offset;
         $this->limit = $limit;
+        $this->sort = $sort;
     }
     public function getPosts()
     {
-        echo json_encode($this->database->
-            getPosts($this->category, $this->offset, $this->limit));
+        switch ($this->sort)
+        {
+            case 1:
+                $json = $this->database->
+                    getPosts($this->category, $this->offset,
+                    $this->limit, null);
+                break;
+            default:
+                $json = $this->database->
+                    getPosts($this->category, $this->offset,
+                    $this->limit, "post_time");
+                break;
+        }
+        echo json_encode($json);
     }
 }
