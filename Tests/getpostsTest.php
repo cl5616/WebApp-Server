@@ -12,17 +12,19 @@ class getpostTest extends TestCase
     $_GET["offset"] = 0;
     $_GET["limit"] = 30;
     $_GET["category"] = "social";
+    $_GET["sort"]="1";
     $offset = toNum($_GET, "offset");
     $limit = toNum($_GET, "limit");
     $category = nullIfNotSet($_GET, "category");
+    $sort = toNum($_GET, "sort");
     if ($category != null)
         dieIfInvalidCategory($category);
 
-    $getter = new PostGetter($category, $offset, $limit, $db);
+    $getter = new PostGetter($category, $offset, $limit, $sort, $db);
 
 
     $db->expects($this->once())->method('getPosts')->with($category,
-    $offset, $limit)->willReturn(array(array("msg_id"=>"1",
+    $offset, $limit, null)->willReturn(array(array("msg_id"=>"1",
         "poster_id"=>"2",
         "content"=>"content",
         "picture"=>"picture",
