@@ -25,7 +25,12 @@ class PostGetter
             case 1:
                 $json = $this->database->
                     getPosts($this->category, $this->offset,
-                    $this->limit, null);
+                    $this->limit, "like_num");
+                break;
+            case 2:
+                $json = $this->database->
+                getPosts($this->category, $this->offset,
+                    $this->limit, "view_num");
                 break;
             default:
                 $json = $this->database->

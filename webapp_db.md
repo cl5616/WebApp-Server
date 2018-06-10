@@ -47,7 +47,7 @@ CREATE TABLE posts(
     title varchar(129) NOT NULL,
     category category_t,
     deleted bit NOT NULL,
-    anonymous bit NOT NULL,
+    anonymous bit NOT NULL
 )
 ```
 

@@ -135,8 +135,7 @@ final class PostGREDatabase implements Database
     {
         return $b["like_num"] - $a["like_num"];
     }
-
-    public function getPosts($category, $offset, $limit, $order_column)
+    private static function genWhere($category)
     {
         if ($category !== null)
         {
@@ -146,8 +145,23 @@ final class PostGREDatabase implements Database
         {
             $where = " WHERE deleted=B'0'";
         }
-        $query = "SELECT id,user_id,content,picture,anonymous,post_time,title FROM ".
-            self::DB_POSTS_TAB.$where.
+        return $where;
+    }
+    public function getPosts($category, $offset, $limit, $order_column)
+    {
+        $where = self::genWhere($category);
+        $subquery = "SELECT id,".self::DB_POSTS_TAB.".user_id,content,".
+            "picture,anonymous,post_time,title,COUNT(like_relation.user_id) AS like_num FROM ".
+            self::DB_POSTS_TAB." LEFT JOIN like_relation ON ".
+            self::DB_POSTS_TAB.".id=like_relation.msg_id"
+            .$where." GROUP BY ".self::DB_POSTS_TAB.".id";
+
+        $query = "SELECT id,posts_like.user_id,content,".
+            "picture,anonymous,post_time,title,like_num,".
+            "COUNT(view_relation.user_id) AS view_num FROM ($subquery) AS posts_like".
+            " LEFT JOIN view_relation ON posts_like.id=view_relation.msg_id".
+            " GROUP BY id,posts_like.user_id,content,".
+            "picture,anonymous,post_time,title,like_num".
             self::orderLimitOffset($order_column, $offset, $limit);
 
         $result = pg_query($this->conn, $query);
@@ -172,14 +186,10 @@ final class PostGREDatabase implements Database
                 "content"=>$row[2],
                 "picture"=>$row[3],
                 "view_num"=>$this->getRelationCounter($msg_id, "view"),
-                "like_num"=>$this->getRelationCounter($msg_id, "like"),
+                "like_num"=>(int)$row[7],
                 "post_time"=>$row[5],
                 "title"=>$row[6]);
             array_push($ret, $one_row);
-        }
-        if ($order_column == null)
-        {
-            usort($ret, "self::cmp_like");
         }
         return $ret;
     }
