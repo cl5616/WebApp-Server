@@ -1,6 +1,6 @@
 <?php
 require_once "session.php";
-class IfLike
+class IfAddedOne
 {
     private $post_id;
     private $database;
@@ -12,7 +12,7 @@ class IfLike
         $this->database = $database;
         $this->count_name = $count_name;
     }
-    public function tryIfLike()
+    public function tryIfAdded()
     {
         $result = $this->database->ifAddedOne(getCurUserId(),
             $this->post_id, $this->count_name);
