@@ -24,7 +24,7 @@ class getpostTest extends TestCase
 
 
     $db->expects($this->once())->method('getPosts')->with($category,
-    $offset, $limit, null)->willReturn(array(array("msg_id"=>"1",
+    $offset, $limit, "like_num")->willReturn(array(array("msg_id"=>"1",
         "poster_id"=>"2",
         "content"=>"content",
         "picture"=>"picture",
