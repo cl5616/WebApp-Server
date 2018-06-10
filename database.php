@@ -131,10 +131,6 @@ final class PostGREDatabase implements Database
         $row = pg_fetch_row($result);
         return (int)$row[0];
     }
-    private static function cmp_like($a, $b)
-    {
-        return $b["like_num"] - $a["like_num"];
-    }
     private static function genWhere($category)
     {
         if ($category !== null)
@@ -185,7 +181,7 @@ final class PostGREDatabase implements Database
                 "poster_id"=>$user_id,
                 "content"=>$row[2],
                 "picture"=>$row[3],
-                "view_num"=>$this->getRelationCounter($msg_id, "view"),
+                "view_num"=>(int)$row[8],
                 "like_num"=>(int)$row[7],
                 "post_time"=>$row[5],
                 "title"=>$row[6]);
@@ -207,6 +203,18 @@ final class PostGREDatabase implements Database
         else
             return true;
 
+    }
+    public function ifAddedOne($user_id, $post_id, $count_name)
+    {
+        $query = "SELECT * FROM $count_name"."_relation".
+            " WHERE msg_id=$post_id and user_id=$user_id";
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+            return false;
+        else if ($row = pg_fetch_row($result))
+            return 1;
+        else
+            return 0;
     }
     public function cancel($user_id, $post_id, $count_name)
     {
