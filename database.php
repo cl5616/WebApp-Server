@@ -17,6 +17,8 @@ interface Database
 
 final class PostGREDatabase implements Database
 {
+    const PROF_EDIT_NUM = 4;
+
     private static function boolToBit($b)
     {
         return $b ? "B'1'" : "B'0'";
@@ -268,6 +270,48 @@ final class PostGREDatabase implements Database
         }
         return true;
     }
+    private static function toInsertQuery(&$columns, &$values, $column_name, $new_val)
+    {
+        if ($new_val !== null)
+        {
+            array_push($columns, $column_name);
+            array_push($values, $new_val);
+        }
+    }
+    public function editProfile($new_intro, $new_image,
+                                $new_nickname, $new_psw_hash, $userid)
+    {
+        $columns = array();
+        $values = array();
+        self::toInsertQuery($columns, $values, "introduction", $new_intro);
+        self::toInsertQuery($columns, $values, "image", $new_image);
+        self::toInsertQuery($columns, $values, "nickname", $new_nickname);
+        self::toInsertQuery($columns, $values, "password", $new_psw_hash);
+        $len = count($columns);
+        if ($len === 0)
+            return true;
+        $query = "UPDATE ".self::DB_USER_TAB.
+            " SET ";
+        for ($i = 0; $i < $len - 1; $i++)
+        {
+            $query .= $columns[$i];
+            $query .= "=\$";
+            $query .= $i+1;
+            $query .= ",";
+        }
+        $query .= $columns[$i];
+        $query .= "=\$";
+        $query .= $len;
+        $query .= " WHERE id=$userid";
+        $result = pg_prepare($this->conn,"edit_profile", $query);
+        if (!$result)
+            return false;
+        $result = pg_execute($this->conn, "edit_profile", $values);
+        if (!$result)
+            return false;
+        else
+            return true;
+    }
     public function getEmailPswInfo($email)
     {
         $query = "SELECT id,password,salt FROM users WHERE email = $1";
@@ -284,11 +328,30 @@ final class PostGREDatabase implements Database
         $row = pg_fetch_row($result);
         if ($row)
         {
-            return array("id"=>(int)$row[0], "password"=>$row[1], "salt"=>$row[1]);
+            return array("id"=>(int)$row[0], "password"=>$row[1], "salt"=>$row[2]);
         }
         else
         {
             return array();
+        }
+    }
+
+    public function getIdPswInfo($id)
+    {
+        $query = "SELECT password,salt FROM users WHERE id=$id";
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+        {
+            return false;
+        }
+        $row = pg_fetch_row($result);
+        if ($row)
+        {
+            return array("password"=>$row[0], "salt"=>$row[1]);
+        }
+        else
+        {
+            return false;
         }
     }
 }

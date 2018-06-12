@@ -25,7 +25,8 @@ CREATE TABLE users(
     password char(64) NOT NULL,
     salt char(64) NOT NULL,
     nickname char(32) NOT NULL,
-    introduction varchar(256)
+    introduction varchar(256),
+    image varchar(32)
 );
 ```
 
