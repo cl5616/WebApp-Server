@@ -66,15 +66,18 @@ final class PostGREDatabase implements Database
     {
         $query = "INSERT INTO ".self::DB_POSTS_TAB.
             " (user_id,post_time,picture,content,category,deleted,".
-            "anonymous,title)".
+            "anonymous,title,tags,search_vec)".
             " VALUES (".$user_id.",CURRENT_TIMESTAMP,$3,$1,$2,B'0',".
-            self::boolToBit($anonymous).",$4)";
+            self::boolToBit($anonymous).",$4,'test tags',".
+            "setweight(to_tsvector('english',$5),'C') ||".
+            "setweight(to_tsvector('english','test tags'),'B') ||".
+            "setweight(to_tsvector('english',$1),'A'))";
         $result = pg_prepare($this->conn, "post_msg", $query);
         if (!$result)
         {
             return false;
         }//works well when picture===null
-        $result = pg_execute($this->conn, "post_msg", [$content, $category, $picture, $title]);
+        $result = pg_execute($this->conn, "post_msg", [$content, $category, $picture, $title, $title]);
         if (!$result)
         {
             return false;
