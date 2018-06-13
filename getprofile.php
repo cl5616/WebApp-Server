@@ -4,7 +4,7 @@ require_once "database.php";
 require_once "Classes/Class_getprofile.php";
 
 //test-------------
-$_POST["userid"] = 2;
+//$_POST["userid"] = 2;
 //test-------------
 
 $userid = toNum($_POST, "userid");
