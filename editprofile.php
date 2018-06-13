@@ -1,7 +1,7 @@
 <?php
 require_once "Classes/Class_editprofile.php";
 require_once "database.php";
-//test--------------
+/*/test--------------
 $_POST["intro"] = "test edit 2";
 $_POST["nickname"] = "LucasSB";
 $_POST["oldpsw"] = "password2";

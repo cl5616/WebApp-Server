@@ -354,4 +354,19 @@ final class PostGREDatabase implements Database
             return false;
         }
     }
+
+    public function getProfile($user_id)
+    {
+        $query = "SELECT email,nickname,introduction,image FROM users WHERE id=$user_id";
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+            return false;
+        $row = pg_fetch_row($result);
+        if ($row)
+        {
+            return array("email"=>$row[0], "nickname"=>$row[1],
+                "introduction"=>$row[2], "image"=>$row[3]);
+        }
+        return array();
+    }
 }

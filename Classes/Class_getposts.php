@@ -38,6 +38,9 @@ class PostGetter
                     $this->limit, "post_time");
                 break;
         }
-        echo json_encode($json);
+        if ($json === false)
+            dieWithErrorMsg("database error");
+        else
+            echo json_encode($json);
     }
 }

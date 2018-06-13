@@ -8,8 +8,7 @@ function dieWithErrorMsg($msg)
     function returnJsonStatus($ret)
     {
         $ret = $ret ? "true" : "false";
-        $error_msg = $ret ? "" : ",\"error\":\"database error\"";
-        echo "{\"status\":".$ret.$error_msg."}";
+        echo "{\"status\":".$ret."}";
     }
 
     function dieIfEmpty($map, $key)

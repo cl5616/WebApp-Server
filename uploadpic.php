@@ -15,8 +15,7 @@ function isImgExtension($ext)
 
 function getImgName($imgType, $imgId, $ext)
 {
-    $name = "";
-    $name .= encodeNum(getCurUserId(), 6);
+    $name = encodeNum(getCurUserId(), 6);
     $name .= encodeNum($imgType, 3);
     $name .= encodeNum($imgId, 6);
     $name .= ".".$ext;
