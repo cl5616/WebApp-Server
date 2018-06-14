@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fb6fc57-7292-40df-8d62-99cbae29cff9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addcomment.php" beforeDir="false" afterPath="$PROJECT_DIR$/addcomment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addpost.php" beforeDir="false" afterPath="$PROJECT_DIR$/addpost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/editprofile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getcomments.php" beforeDir="false" afterPath="$PROJECT_DIR$/getcomments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getposts.php" beforeDir="false" afterPath="$PROJECT_DIR$/getposts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/getprofile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iflike.php" beforeDir="false" afterPath="$PROJECT_DIR$/iflike.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ifviewed.php" beforeDir="false" afterPath="$PROJECT_DIR$/ifviewed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/like.php" beforeDir="false" afterPath="$PROJECT_DIR$/like.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocess.php" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unlike.php" beforeDir="false" afterPath="$PROJECT_DIR$/unlike.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploadpic.php" beforeDir="false" afterPath="$PROJECT_DIR$/uploadpic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchposts.php" beforeDir="false" afterPath="$PROJECT_DIR$/searchposts.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,11 +15,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="iflike.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/iflike.php">
+      <file leaf-file-name="getcomments.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/getcomments.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+            <state relative-caret-position="456">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addpost.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/addpost.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addcomment.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/addcomment.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="searchposts.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/searchposts.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -71,8 +85,6 @@
         <option value="$PROJECT_DIR$/session.php" />
         <option value="$PROJECT_DIR$/sessionstart.php" />
         <option value="$PROJECT_DIR$/preprocess.php" />
-        <option value="$PROJECT_DIR$/addcomment.php" />
-        <option value="$PROJECT_DIR$/addpost.php" />
         <option value="$PROJECT_DIR$/editprofile.php" />
         <option value="$PROJECT_DIR$/getcomments.php" />
         <option value="$PROJECT_DIR$/getposts.php" />
@@ -86,6 +98,9 @@
         <option value="$PROJECT_DIR$/unlike.php" />
         <option value="$PROJECT_DIR$/uploadpic.php" />
         <option value="$PROJECT_DIR$/view.php" />
+        <option value="$PROJECT_DIR$/searchposts.php" />
+        <option value="$PROJECT_DIR$/addpost.php" />
+        <option value="$PROJECT_DIR$/addcomment.php" />
       </list>
     </option>
   </component>
@@ -112,8 +127,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="25" />
+    <option name="x" value="530" />
+    <option name="y" value="-9" />
     <option name="width" value="1750" />
     <option name="height" value="970" />
   </component>
@@ -129,11 +144,6 @@
             <path>
               <item name="WebAppsServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="WebAppsServer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebAppsServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebAppsServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Classes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -208,12 +218,12 @@
       <workItem from="1528280920782" duration="15285000" />
       <workItem from="1528369207701" duration="19889000" />
       <workItem from="1528458676061" duration="2048000" />
-      <workItem from="1528562899559" duration="35526000" />
+      <workItem from="1528562899559" duration="36520000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142999000" />
+    <option name="totallyTimeSpent" value="143993000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -224,7 +234,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3314917" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3314917" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17838542" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -417,24 +427,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/addcomment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="50" lean-forward="true" selection-start-line="2" selection-start-column="50" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/editprofile.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getcomments.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -456,13 +452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1245">
           <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addpost.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -544,13 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/searchposts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" selection-start-line="1" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/register.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -577,6 +559,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/searchposts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getcomments.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addpost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addcomment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
         </state>
       </provider>
     </entry>
