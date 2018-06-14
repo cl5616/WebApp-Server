@@ -4,7 +4,7 @@ require_once "preprocess.php";
 require_once "database.php";
 require_once "cancel.php";
 
-//test--------
+/*/test--------
 $_POST["post_id"] = "13";
 //test--------*/
 
