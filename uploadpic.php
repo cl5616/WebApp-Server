@@ -50,7 +50,7 @@ dieIfEmpty($_POST, "type");
 dieIfEmpty($_POST, "id");
 
 $imgName = getImgName((int)$_POST["type"], (int)$_POST["id"], $ext);
-$imgFilePath = "../pic/".$imgName;
+$imgFilePath = "pic/".$imgName;
 if (file_exists($imgFilePath))
 {
     dieWithErrorMsg("image already exist");
