@@ -28,7 +28,7 @@ class Login
             if (strcmp($hash, $result["password"]) == 0)
             {
                 $_SESSION["id"] = $result["id"];
-                return json_encode(array("status"=>true,"id"=>$result["id"]));
+                echo json_encode(array("status"=>true,"id"=>$result["id"]));
             }
             else
             {
