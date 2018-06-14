@@ -21,7 +21,7 @@ class All_Test extends TestCase
     ob_start();
     include_once 'loginTest.php';
     $result = ob_get_clean();
-    $this->assertEquals($result, '{"status":true}');
+    $this->assertEquals($result, '{"status":true,"id":1}');
   }
   public function testAddPost()
   {
