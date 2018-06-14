@@ -1,5 +1,6 @@
 #!/usr/bin/php
 <?php
+require_once "preprocess.php";
 require_once "database.php";
 require_once "Classes/Class_ifaddedone.php";
 

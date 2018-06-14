@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
     require_once "./Classes/Class_addcomment.php";
-
+    require_once "preprocess.php";
 
     $db = PostGREDatabase::getInstance();
 

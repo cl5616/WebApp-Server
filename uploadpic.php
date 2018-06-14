@@ -1,6 +1,7 @@
 #!/usr/bin/php
 <?php
 
+require_once "preprocess.php";
 require_once "utils.php";
 require_once "session.php";
 const MAX_IMG_SIZE = 0x100000;

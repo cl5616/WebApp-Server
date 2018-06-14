@@ -1,4 +1,5 @@
 <?php
+require_once "preprocess.php";
 require_once "Classes/Class_editprofile.php";
 require_once "database.php";
 /*/test--------------

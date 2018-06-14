@@ -1,6 +1,7 @@
 #!/usr/bin/php
 <?php
-require "./Classes/Class_getcomment.php";
+require_once "preprocess.php";
+require_once "./Classes/Class_getcomment.php";
 
 /*/test----------
 $_GET["msg_id"] = "11";
