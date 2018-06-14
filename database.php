@@ -7,7 +7,7 @@ interface Database
 {
     public function postMsg($content, $category, $user_id, $picture, $anonymous, $title);
     public function postComment($msg_id, $content, $reply_id, $user_id);
-    public function getPosts($category, $offset, $limit, $order_column);
+    public function getPosts($category, $offset, $limit, $order_val);
     public function ifEmailExist($email);
     public function doRegister($email, $password_hash, $salt, $nickname, $introduction);
     public function getEmailPswInfo($email);
@@ -101,9 +101,9 @@ final class PostGREDatabase implements Database
         }
         return true;
     }
-    private static function orderLimitOffset($order_column, $offset, $limit)
+    private static function orderLimitOffset($order_val, $offset, $limit)
     {
-        $order_by = $order_column == null ? "" : " ORDER BY ".$order_column." DESC";
+        $order_by = $order_val == null ? "" : " ORDER BY ".$order_val." DESC";
         return $order_by." LIMIT ".$limit." OFFSET ".$offset;
     }
     public function getComments($msg_id, $offset, $limit)
@@ -148,22 +148,55 @@ final class PostGREDatabase implements Database
         }
         return $where;
     }
-    public function getPosts($category, $offset, $limit, $order_column)
+
+    private static function userInputToQuery($input)
+    {
+        $ret = "";
+        preg_match_all("/[a-zA-Z0-9\\-]+/", $input, $out);
+        foreach ($out[0] as $word)
+        {
+            $ret .= $word;
+            $ret .= "&";
+        }
+        return substr($ret, 0, strlen($ret) - 1);
+    }
+
+    public function searchPosts($query, $offset, $limit)
+    {
+        $new_query = self::userInputToQuery($query);
+        if (strlen($new_query) === 0)
+        {
+            return self::getPosts(null, $offset, $limit, "post_time");
+        }
+        else
+        {
+            $order = "ts_rank_cd(search_vec, to_tsquery('english','$new_query'))";
+            $where = " WHERE to_tsquery('english','$new_query') @@ search_vec and deleted=B'0'";
+            return $this->getPostsCustomWhere($where, $offset, $limit, $order);
+        }
+    }
+
+    public function getPosts($category, $offset, $limit, $order_val)
     {
         $where = self::genWhere($category);
+        return self::getPostsCustomWhere($where, $offset, $limit, $order_val);
+    }
+
+    private function getPostsCustomWhere($where, $offset, $limit, $order_val)
+    {
         $subquery = "SELECT id,".self::DB_POSTS_TAB.".user_id,content,".
-            "picture,anonymous,post_time,title,COUNT(like_relation.user_id) AS like_num FROM ".
+            "picture,anonymous,post_time,title,search_vec,COUNT(like_relation.user_id) AS like_num FROM ".
             self::DB_POSTS_TAB." LEFT JOIN like_relation ON ".
             self::DB_POSTS_TAB.".id=like_relation.msg_id"
             .$where." GROUP BY ".self::DB_POSTS_TAB.".id";
 
         $query = "SELECT id,posts_like.user_id,content,".
-            "picture,anonymous,post_time,title,like_num,".
+            "picture,anonymous,post_time,title,search_vec,like_num,".
             "COUNT(view_relation.user_id) AS view_num FROM ($subquery) AS posts_like".
             " LEFT JOIN view_relation ON posts_like.id=view_relation.msg_id".
             " GROUP BY id,posts_like.user_id,content,".
-            "picture,anonymous,post_time,title,like_num".
-            self::orderLimitOffset($order_column, $offset, $limit);
+            "picture,anonymous,post_time,title,search_vec,like_num".
+            self::orderLimitOffset($order_val, $offset, $limit);
 
         $result = pg_query($this->conn, $query);
         if (!$result)
