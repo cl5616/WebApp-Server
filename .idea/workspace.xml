@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fb6fc57-7292-40df-8d62-99cbae29cff9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unlike.php" beforeDir="false" afterPath="$PROJECT_DIR$/unlike.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploadpic.php" beforeDir="false" afterPath="$PROJECT_DIR$/uploadpic.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,11 +67,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="unlike.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="unlike.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/unlike.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
               <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="uploadpic.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/uploadpic.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="52" column="19" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -136,7 +144,6 @@
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/PostContent.php" />
         <option value="$PROJECT_DIR$/register.php" />
-        <option value="$PROJECT_DIR$/uploadpic.php" />
         <option value="$PROJECT_DIR$/view.php" />
         <option value="$PROJECT_DIR$/addcomment.php" />
         <option value="$PROJECT_DIR$/addpost.php" />
@@ -148,6 +155,7 @@
         <option value="$PROJECT_DIR$/iflike.php" />
         <option value="$PROJECT_DIR$/session.php" />
         <option value="$PROJECT_DIR$/unlike.php" />
+        <option value="$PROJECT_DIR$/uploadpic.php" />
       </list>
     </option>
   </component>
@@ -270,12 +278,12 @@
       <workItem from="1528280920782" duration="15285000" />
       <workItem from="1528369207701" duration="19889000" />
       <workItem from="1528458676061" duration="2048000" />
-      <workItem from="1528562899559" duration="46256000" />
+      <workItem from="1528562899559" duration="46936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153729000" />
+    <option name="totallyTimeSpent" value="154409000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -286,9 +294,9 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32872927" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32872927" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17838542" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17838542" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872927" />
@@ -485,13 +493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uploadpic.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -644,6 +645,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uploadpic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="52" column="19" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
         </state>
       </provider>
     </entry>
