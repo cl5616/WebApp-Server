@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fb6fc57-7292-40df-8d62-99cbae29cff9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uploadpic.php" beforeDir="false" afterPath="$PROJECT_DIR$/uploadpic.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,8 +43,8 @@
       <file leaf-file-name="editprofile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/editprofile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" column="2" lean-forward="true" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+            <state relative-caret-position="48">
+              <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -63,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/uploadpic.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="96">
-              <caret line="52" column="16" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
+              <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -252,12 +251,12 @@
       <workItem from="1528280920782" duration="15285000" />
       <workItem from="1528369207701" duration="19889000" />
       <workItem from="1528458676061" duration="2048000" />
-      <workItem from="1528562899559" duration="48999000" />
+      <workItem from="1528562899559" duration="49082000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156472000" />
+    <option name="totallyTimeSpent" value="156555000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -596,13 +595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/editprofile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="2" lean-forward="true" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/addpost.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -617,10 +609,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/editprofile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/uploadpic.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
-          <caret line="52" column="16" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
+          <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
         </state>
       </provider>
     </entry>
