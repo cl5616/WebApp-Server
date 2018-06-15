@@ -20,12 +20,13 @@ class addPostTest extends TestCase
     $title = emptyIfNotSet($_POST,"title");
     $picture = nullIfNotSet($_POST, "picture");
     $anonymous = emptyIfNotSet($_POST, "anonymous");
+    $tags = emptyIfNotSet($_POST, "tags");
 
     $uploader = new PostUploader($_POST["category"], $content,
-        $picture, $anonymous, $title, $db);
+        $picture, $anonymous, $title, $tags, $db);
 
     $db->expects($this->once())->method('postMsg')->with($content,
-     $_POST["category"], getCurUserId(), $picture, $anonymous, $title)->willReturn(True);
+     $_POST["category"], getCurUserId(), $picture, $anonymous, $title. $tags)->willReturn(True);
 
     $uploader->doPost();
   }
