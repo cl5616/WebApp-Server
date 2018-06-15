@@ -5,7 +5,7 @@ require_once "utils.php";
 
 interface Database
 {
-    public function postMsg($content, $category, $user_id, $picture, $anonymous, $title);
+    public function postMsg($content, $category, $user_id, $picture, $anonymous, $tags, $title);
     public function postComment($msg_id, $content, $reply_id, $user_id);
     public function getPosts($category, $offset, $limit, $order_val);
     public function ifEmailExist($email);
@@ -62,22 +62,26 @@ final class PostGREDatabase implements Database
         }
     }
 
-    public function postMsg($content, $category, $user_id, $picture, $anonymous, $title)
+    public function postMsg($content, $category,
+                            $user_id, $picture, $anonymous,
+                            $tags, $title)
     {
+        $tags_text = self::fetchAllWords($tags, " ");
         $query = "INSERT INTO ".self::DB_POSTS_TAB.
             " (user_id,post_time,picture,content,category,deleted,".
             "anonymous,title,tags,search_vec)".
             " VALUES (".$user_id.",CURRENT_TIMESTAMP,$3,$1,$2,B'0',".
-            self::boolToBit($anonymous).",$4,'test tags',".
+            self::boolToBit($anonymous).",$4,$6,".
             "setweight(to_tsvector('english',$5),'C') ||".
-            "setweight(to_tsvector('english','test tags'),'B') ||".
+            "setweight(to_tsvector('english',$6),'B') ||".
             "setweight(to_tsvector('english',$1),'A'))";
         $result = pg_prepare($this->conn, "post_msg", $query);
         if (!$result)
         {
             return false;
         }//works well when picture===null
-        $result = pg_execute($this->conn, "post_msg", [$content, $category, $picture, $title, $title]);
+        $result = pg_execute($this->conn, "post_msg",
+            [$content, $category, $picture, $title, $title, $tags_text]);
         if (!$result)
         {
             return false;
@@ -149,21 +153,21 @@ final class PostGREDatabase implements Database
         return $where;
     }
 
-    private static function userInputToQuery($input)
+    private static function fetchAllWords($input, $separator)
     {
         $ret = "";
         preg_match_all("/[a-zA-Z0-9\\-]+/", $input, $out);
         foreach ($out[0] as $word)
         {
             $ret .= $word;
-            $ret .= "&";
+            $ret .= $separator;
         }
         return substr($ret, 0, strlen($ret) - 1);
     }
 
     public function searchPosts($query, $offset, $limit, $category, $orderval)
     {
-        $new_query = self::userInputToQuery($query);
+        $new_query = self::fetchAllWords($query, "&");
         if (strlen($new_query) === 0)
         {
             return self::getPosts(null, $offset, $limit, "post_time");

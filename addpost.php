@@ -17,7 +17,8 @@ $content = emptyIfNotSet($_POST,"content");
 $title = emptyIfNotSet($_POST,"title");
     $picture = nullIfNotSet($_POST, "picture");
     $anonymous = emptyIfNotSet($_POST, "anonymous");
+    $tags = emptyIfNotSet($_POST, "tags");
 
     $uploader = new PostUploader($_POST["category"], $content,
-        $picture, $anonymous, $title, $db);
+        $picture, $anonymous, $title,$tags, $db);
     $uploader->doPost();
