@@ -161,7 +161,7 @@ final class PostGREDatabase implements Database
         return substr($ret, 0, strlen($ret) - 1);
     }
 
-    public function searchPosts($query, $offset, $limit)
+    public function searchPosts($query, $offset, $limit, $category, $orderval)
     {
         $new_query = self::userInputToQuery($query);
         if (strlen($new_query) === 0)
@@ -170,8 +170,16 @@ final class PostGREDatabase implements Database
         }
         else
         {
-            $order = "ts_rank_cd(search_vec, to_tsquery('english','$new_query'))";
-            $where = " WHERE to_tsquery('english','$new_query') @@ search_vec and deleted=B'0'";
+            if ($orderval === null)
+            {
+                $order = "ts_rank_cd(search_vec, to_tsquery('english','$new_query'))";
+            }
+            else
+            {
+                $order = $orderval;
+            }
+            $where = " WHERE to_tsquery('english','$new_query') @@ search_vec and deleted=B'0'".
+                ($category === null ? "" : " and category='$category'");
             return $this->getPostsCustomWhere($where, $offset, $limit, $order);
         }
     }
