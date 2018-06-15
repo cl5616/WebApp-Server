@@ -209,7 +209,7 @@ final class PostGREDatabase implements Database
             " FROM ($subquery) AS posts_like".
             " LEFT JOIN view_relation ON posts_like.id=view_relation.msg_id".
             " GROUP BY id,posts_like.user_id,content,".
-            "picture,anonymous,post_time,title,like_num,search_vec".
+            "picture,anonymous,post_time,title,like_num,tags,search_vec".
             self::orderLimitOffset($order_val, $offset, $limit);
 
         $result = pg_query($this->conn, $query);

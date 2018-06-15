@@ -190,7 +190,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHP Script.searchposts.php">
+  <component name="RunManager" selected="PHP Script.getposts">
     <configuration name="addpost.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/addpost.php" />
     <configuration name="editprofile.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/editprofile.php" />
     <configuration name="getcomments" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/getcomments.php" />
