@@ -4,7 +4,7 @@
 require_once "preprocess.php";
 require_once "utils.php";
 require_once "session.php";
-const MAX_IMG_SIZE = 0x100000;
+const MAX_IMG_SIZE = 0x1000000;
 const IMG_POST = 1;
 function isImgExtension($ext)
 {
