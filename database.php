@@ -193,17 +193,18 @@ final class PostGREDatabase implements Database
     private function getPostsCustomWhere($where, $offset, $limit, $order_val)
     {
         $subquery = "SELECT id,".self::DB_POSTS_TAB.".user_id,content,".
-            "picture,anonymous,post_time,title,search_vec,COUNT(like_relation.user_id) AS like_num FROM ".
+            "picture,anonymous,post_time,title,COUNT(like_relation.user_id) AS like_num,search_vec FROM ".
             self::DB_POSTS_TAB." LEFT JOIN like_relation ON ".
             self::DB_POSTS_TAB.".id=like_relation.msg_id"
             .$where." GROUP BY ".self::DB_POSTS_TAB.".id";
 
         $query = "SELECT id,posts_like.user_id,content,".
-            "picture,anonymous,post_time,title,search_vec,like_num,".
-            "COUNT(view_relation.user_id) AS view_num FROM ($subquery) AS posts_like".
+            "picture,anonymous,post_time,title,like_num,".
+            "COUNT(view_relation.user_id) AS view_num".
+            " FROM ($subquery) AS posts_like".
             " LEFT JOIN view_relation ON posts_like.id=view_relation.msg_id".
             " GROUP BY id,posts_like.user_id,content,".
-            "picture,anonymous,post_time,title,search_vec,like_num".
+            "picture,anonymous,post_time,title,like_num,search_vec".
             self::orderLimitOffset($order_val, $offset, $limit);
 
         $result = pg_query($this->conn, $query);

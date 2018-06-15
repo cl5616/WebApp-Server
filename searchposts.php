@@ -5,9 +5,11 @@ require_once "database.php";
 require_once "Classes/Class_postsearch.php";
 
 /*//test------------
-$_GET["search"] = "pic";
+$_GET["search"] = "tag";
 $_GET["offset"] = 0;
 $_GET["limit"] = 10;
+//$_GET["category"] = "job";
+$_GET["order"]="0";
 ///test------------*/
 
 
