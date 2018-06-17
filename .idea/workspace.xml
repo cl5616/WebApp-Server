@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fb6fc57-7292-40df-8d62-99cbae29cff9" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Classes/Class_follow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/holing.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/holing.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
     </list>
@@ -17,8 +19,8 @@
       <file leaf-file-name="getposts.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getposts.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="14" />
+            <state relative-caret-position="120">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -35,17 +37,44 @@
       <file leaf-file-name="Class_addpost.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Classes/Class_addpost.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
+            <state relative-caret-position="504">
               <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="239" column="30" selection-start-line="239" selection-start-column="30" selection-end-line="239" selection-end-column="30" />
+            <state relative-caret-position="220">
+              <caret line="435" selection-start-line="435" selection-end-line="435" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Class_follow.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Classes/Class_follow.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="follow.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/follow.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="session.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/session.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -57,13 +86,17 @@
       <find>dieWithErrorMsg</find>
       <find>PostGREDatabase::die</find>
       <find>postcom</find>
-      <find>view_num</find>
       <find>$_POST</find>
       <find>getcomment</find>
       <find>cancel</find>
       <find>edit</find>
       <find>search_vec</find>
       <find>postmsg</find>
+      <find>view_num</find>
+      <find>id</find>
+      <find>content</find>
+      <find>tags</find>
+      <find>One</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -86,7 +119,6 @@
         <option value="$PROJECT_DIR$/sessionstart.php" />
         <option value="$PROJECT_DIR$/preprocess.php" />
         <option value="$PROJECT_DIR$/getcomments.php" />
-        <option value="$PROJECT_DIR$/getposts.php" />
         <option value="$PROJECT_DIR$/getprofile.php" />
         <option value="$PROJECT_DIR$/ifviewed.php" />
         <option value="$PROJECT_DIR$/like.php" />
@@ -99,13 +131,16 @@
         <option value="$PROJECT_DIR$/iflike.php" />
         <option value="$PROJECT_DIR$/unlike.php" />
         <option value="$PROJECT_DIR$/editprofile.php" />
-        <option value="$PROJECT_DIR$/session.php" />
         <option value="$PROJECT_DIR$/uploadpic.php" />
         <option value="$PROJECT_DIR$/Classes/Class_postsearch.php" />
         <option value="$PROJECT_DIR$/searchposts.php" />
         <option value="$PROJECT_DIR$/Classes/Class_addpost.php" />
         <option value="$PROJECT_DIR$/addpost.php" />
+        <option value="$PROJECT_DIR$/getposts.php" />
         <option value="$PROJECT_DIR$/database.php" />
+        <option value="$PROJECT_DIR$/Classes/Class_follow.php" />
+        <option value="$PROJECT_DIR$/session.php" />
+        <option value="$PROJECT_DIR$/follow.php" />
       </list>
     </option>
   </component>
@@ -132,8 +167,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
     <option name="width" value="1750" />
     <option name="height" value="970" />
   </component>
@@ -154,11 +189,6 @@
               <item name="WebAppsServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="WebAppsServer" type="462c0819:PsiDirectoryNode" />
               <item name="Classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebAppsServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebAppsServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -190,30 +220,30 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHP Script.getposts">
+  <component name="RunManager" selected="PHP Script.follow.php">
     <configuration name="addpost.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/addpost.php" />
     <configuration name="editprofile.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/editprofile.php" />
+    <configuration name="follow.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/follow.php" />
     <configuration name="getcomments" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/getcomments.php" />
     <configuration name="getposts" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/getposts.php" />
     <configuration name="iflike.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/iflike.php" />
     <configuration name="searchposts.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/searchposts.php" />
-    <configuration name="unlike.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/unlike.php" />
     <list>
       <item itemvalue="PHP Script.getcomments" />
       <item itemvalue="PHP Script.getposts" />
       <item itemvalue="PHP Script.editprofile.php" />
       <item itemvalue="PHP Script.addpost.php" />
       <item itemvalue="PHP Script.searchposts.php" />
-      <item itemvalue="PHP Script.unlike.php" />
       <item itemvalue="PHP Script.iflike.php" />
+      <item itemvalue="PHP Script.follow.php" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PHP Script.follow.php" />
         <item itemvalue="PHP Script.searchposts.php" />
         <item itemvalue="PHP Script.editprofile.php" />
         <item itemvalue="PHP Script.addpost.php" />
         <item itemvalue="PHP Script.iflike.php" />
-        <item itemvalue="PHP Script.unlike.php" />
       </list>
     </recent_temporary>
   </component>
@@ -233,37 +263,38 @@
       <workItem from="1528280920782" duration="15285000" />
       <workItem from="1528369207701" duration="19889000" />
       <workItem from="1528458676061" duration="2048000" />
-      <workItem from="1528562899559" duration="56213000" />
+      <workItem from="1528562899559" duration="56629000" />
+      <workItem from="1529203353651" duration="2234000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163686000" />
+    <option name="totallyTimeSpent" value="166336000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17838542" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32872927" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17838542" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32872927" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.18370166" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.28867403" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.28867403" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32872927" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,25 +321,16 @@
           <line>77</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/follow.php</url>
+          <line>11</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="63" />
+      <option name="time" value="64" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/getposts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="28" column="2" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2448">
-          <caret line="102" column="9" lean-forward="true" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/addpost.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -367,13 +389,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sessionstart.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/sessionstart.php" />
     <entry file="file://$PROJECT_DIR$/increment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -488,13 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/register.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -572,29 +581,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/Class_addpost.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/addpostTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-216" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/Class_addpost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/getposts.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="14" />
+        <state relative-caret-position="120">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="239" column="30" selection-start-line="239" selection-start-column="30" selection-end-line="239" selection-end-column="30" />
+        <state relative-caret-position="220">
+          <caret line="435" selection-start-line="435" selection-end-line="435" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/Class_follow.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/follow.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
         </state>
       </provider>
     </entry>

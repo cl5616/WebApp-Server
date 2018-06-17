@@ -420,4 +420,19 @@ final class PostGREDatabase implements Database
         }
         return array();
     }
+
+    public function followUser($follower_id, $followee_id)
+    {
+        $query = "DO\n \$do\$\n BEGIN";
+        $query .= " IF NOT EXISTS (SELECT * FROM follow_relation".
+            " WHERE follower=".$follower_id." and followee=".$followee_id.") THEN";
+        $query .= " INSERT INTO follow_relation (follower,followee) ".
+            "VALUES (".$follower_id.", ".$followee_id.");";
+        $query .= "END IF; END\n\$do\$";
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+            return false;
+        else
+            return true;
+    }
 }
