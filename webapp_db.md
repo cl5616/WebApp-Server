@@ -48,9 +48,23 @@ CREATE TABLE posts(
     title varchar(129) NOT NULL,
     category category_t,
     deleted bit NOT NULL,
-    anonymous bit NOT NULL
+    anonymous bit NOT NULL,
+    search_vec tsvector NOT NULL,
+    tags text NOT NULL
 )
+
 ```
+
+## tags
+
+```sql
+CREATE TABLE tags(
+	id SERIAL PRIMARY KEY,
+    word varchar(32) NOT NULL
+);
+```
+
+
 
 ## relation
 
@@ -63,6 +77,11 @@ CREATE TABLE like_relation(
 CREATE TABLE view_relation(
 	msg_id int NOT NULL,
     user_id int NOT NULL
+);
+
+CREATE TABLE follow_relation(
+	user_id int NOT NULL,
+    tag_id int NOT NULL
 );
 ```
 
