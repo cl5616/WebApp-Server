@@ -58,3 +58,14 @@ function dieWithErrorMsg($msg)
                 return;
         else dieWithErrorMsg("invalid category");
     }
+
+    function fetchAllWordsAsArr($input)
+    {
+        $ret = array();
+        preg_match_all("/[a-zA-Z0-9\\-]+/", $input, $out);
+        foreach ($out[0] as $word)
+        {
+            array_push($ret, $word);
+        }
+        return $ret;
+    }

@@ -66,7 +66,8 @@ final class PostGREDatabase implements Database
                             $user_id, $picture, $anonymous,
                             $tags, $title)
     {
-        $tags_text = self::fetchAllWords($tags, " ");
+        $tags_arr = fetchAllWordsAsArr($tags);
+        $tags_text = join(" ", $tags_arr);
         $query = "INSERT INTO ".self::DB_POSTS_TAB.
             " (user_id,post_time,picture,content,category,deleted,".
             "anonymous,title,tags,search_vec)".
@@ -155,14 +156,7 @@ final class PostGREDatabase implements Database
 
     private static function fetchAllWords($input, $separator)
     {
-        $ret = "";
-        preg_match_all("/[a-zA-Z0-9\\-]+/", $input, $out);
-        foreach ($out[0] as $word)
-        {
-            $ret .= $word;
-            $ret .= $separator;
-        }
-        return substr($ret, 0, strlen($ret) - 1);
+        return join($separator, fetchAllWordsAsArr($input));
     }
 
     public function searchPosts($query, $offset, $limit, $category, $orderval)
@@ -421,13 +415,13 @@ final class PostGREDatabase implements Database
         return array();
     }
 
-    public function followUser($follower_id, $followee_id)
+    public function followTag($user_id, $tag)
     {
         $query = "DO\n \$do\$\n BEGIN";
         $query .= " IF NOT EXISTS (SELECT * FROM follow_relation".
-            " WHERE follower=".$follower_id." and followee=".$followee_id.") THEN";
+            " WHERE follower=".$user_id." and followee=".$tag.") THEN";
         $query .= " INSERT INTO follow_relation (follower,followee) ".
-            "VALUES (".$follower_id.", ".$followee_id.");";
+            "VALUES (".$user_id.", ".$tag.");";
         $query .= "END IF; END\n\$do\$";
         $result = pg_query($this->conn, $query);
         if (!$result)
