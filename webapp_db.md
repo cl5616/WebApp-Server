@@ -81,7 +81,7 @@ CREATE TABLE view_relation(
 
 CREATE TABLE follow_relation(
 	user_id int NOT NULL,
-    tag_id int NOT NULL
+    tag int NOT NULL
 );
 ```
 

@@ -2,16 +2,16 @@
 require_once "session.php";
 class Follow
 {
-    private $userid;
+    private $tag;
     private $database;
-    public function __construct($userid, $database)
+    public function __construct($tag, $database)
     {
-        $this->userid = $userid;
+        $this->tag = $tag;
         $this->database = $database;
     }
     public function doFollow()
     {
-        returnJsonStatus($this->database->followUser
-            (getCurUserId(), $this->userid));
+        returnJsonStatus($this->database->followTag
+            (getCurUserId(), $this->tag));
     }
 }

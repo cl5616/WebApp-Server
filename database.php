@@ -419,9 +419,9 @@ final class PostGREDatabase implements Database
     {
         $query = "DO\n \$do\$\n BEGIN";
         $query .= " IF NOT EXISTS (SELECT * FROM follow_relation".
-            " WHERE follower=".$user_id." and followee=".$tag.") THEN";
-        $query .= " INSERT INTO follow_relation (follower,followee) ".
-            "VALUES (".$user_id.", ".$tag.");";
+            " WHERE user_id=".$user_id." and tag='$tag') THEN";
+        $query .= " INSERT INTO follow_relation (user_id,tag) ".
+            "VALUES (".$user_id.", '$tag');";
         $query .= "END IF; END\n\$do\$";
         $result = pg_query($this->conn, $query);
         if (!$result)
