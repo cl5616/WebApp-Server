@@ -159,6 +159,34 @@ final class PostGREDatabase implements Database
         return join($separator, fetchAllWordsAsArr($input));
     }
 
+    private static function tagsToQueries($tags)
+    {
+        return join(":B|", $tags).":B";
+    }
+
+    private static function getOrderVal($orderval, $new_query)
+    {
+        if ($orderval === null)
+        {
+            $order = "ts_rank_cd(search_vec, to_tsquery('english','$new_query'))";
+        }
+        else
+        {
+            $order = $orderval;
+        }
+        return $order;
+    }
+
+    public function getTagPosts($tags, $offset, $limit, $category, $orderval)
+    {
+        $query = self::tagsToQueries($tags);
+        $order = self::getOrderVal($orderval, $query);
+        $where = " WHERE to_tsquery('english','$query') @@ search_vec and deleted=B'0'".
+            ($category === null ? "" : " and category='$category'");
+        return $this->getPostsCustomWhere($where, $offset, $limit, $order);
+    }
+
+
     public function searchPosts($query, $offset, $limit, $category, $orderval)
     {
         $new_query = self::fetchAllWords($query, "&");
@@ -168,14 +196,7 @@ final class PostGREDatabase implements Database
         }
         else
         {
-            if ($orderval === null)
-            {
-                $order = "ts_rank_cd(search_vec, to_tsquery('english','$new_query'))";
-            }
-            else
-            {
-                $order = $orderval;
-            }
+            $order = self::getOrderVal($orderval, $new_query);
             $where = " WHERE to_tsquery('english','$new_query') @@ search_vec and deleted=B'0'".
                 ($category === null ? "" : " and category='$category'");
             return $this->getPostsCustomWhere($where, $offset, $limit, $order);

@@ -3,7 +3,7 @@
 require_once "utils.php";
 function getCurUserId()
 {
-    return 2;
+    //return 2;
     if (!isset($_SESSION["id"]))
     {
         dieWithErrorMsg("not login yet");
