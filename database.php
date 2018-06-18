@@ -430,8 +430,17 @@ final class PostGREDatabase implements Database
         $row = pg_fetch_row($result);
         if ($row)
         {
+            $query = "SELECT tag FROM follow_relation WHERE user_id=$user_id";
+            $result = pg_query($this->conn, $query);
+            if (!$result)
+                return false;
+            $tags = array();
+            while($tag = pg_fetch_row($result))
+            {
+                array_push($tags, $tag[0]);
+            }
             return array("email"=>$row[0], "nickname"=>$row[1],
-                "introduction"=>$row[2], "image"=>$row[3]);
+                "introduction"=>$row[2], "image"=>$row[3], "tags"=>$tags);
         }
         return array();
     }
