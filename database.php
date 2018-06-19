@@ -1,4 +1,3 @@
-
 <?php
 
 require_once "utils.php";
@@ -44,7 +43,7 @@ final class PostGREDatabase implements Database
     const DB_USER_TAB = "users";
     //constants
 
-    const VALID_POST = "(deleted=B'0' and (expiration=null or CURRENT_TIMESTAMP<expiration))";
+    const VALID_POST = "(deleted=B'0' and (expiration is null or CURRENT_TIMESTAMP<expiration))";
 
 
     private $conn;
