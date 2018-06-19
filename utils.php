@@ -69,3 +69,13 @@ function dieWithErrorMsg($msg)
         }
         return $ret;
     }
+
+    function getTag($raw_tag)
+    {
+        $tags = fetchAllWordsAsArr($raw_tag);
+        if (count($tags) != 1)
+        {
+            dieWithErrorMsg("invalid tag");
+        }
+        return $tags[0];
+    }

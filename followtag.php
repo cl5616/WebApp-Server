@@ -8,11 +8,8 @@ require_once "Classes/Class_follow.php";
 //$_POST["tag"] = "ctf";
 //test----------------*/
 dieIfEmpty($_POST, "tag");
-$tags = fetchAllWordsAsArr($_POST["tag"]);
-if (count($tags) != 1)
-{
-    dieWithErrorMsg("invalid tag");
-}
+$tag = getTag($_POST["tag"]);
 
-$follow = new Follow($tags[0], PostGREDatabase::getInstance());
+
+$follow = new Follow($tag, PostGREDatabase::getInstance());
 $follow->doFollow();

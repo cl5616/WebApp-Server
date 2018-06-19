@@ -459,4 +459,17 @@ final class PostGREDatabase implements Database
         else
             return true;
     }
+
+    public function ifFollowed($user_id, $tag)
+    {
+        $query = "SELECT * FROM follow_relation".
+            " WHERE user_id=".$user_id." and tag='$tag'";
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+            return false;
+        else if (pg_fetch_row($result))
+            return 1;
+        else
+            return 0;
+    }
 }
