@@ -177,6 +177,13 @@ final class PostGREDatabase implements Database
         return $order;
     }
 
+    public function getUserPosts($userid, $offset, $limit, $category, $orderval)
+    {
+        $where = " WHERE user_id=$userid and deleted=B'0'".
+            ($category === null ? "" : " and category='$category'");
+        return $this->getPostsCustomWhere($where, $offset, $limit, $orderval);
+    }
+
     public function getTagPosts($tags, $offset, $limit, $category, $orderval)
     {
         $query = self::tagsToQueries($tags);
