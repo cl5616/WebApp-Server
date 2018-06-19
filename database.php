@@ -460,6 +460,16 @@ final class PostGREDatabase implements Database
             return true;
     }
 
+    public function unfollowTag($user_id, $tag)
+    {
+        $query = "DELETE FROM follow_relation WHERE user_id=$user_id and tag='$tag'";
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+            return false;
+        else
+            return true;
+    }
+
     public function ifFollowed($user_id, $tag)
     {
         $query = "SELECT * FROM follow_relation".
