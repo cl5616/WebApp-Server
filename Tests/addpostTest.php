@@ -21,12 +21,15 @@ class addPostTest extends TestCase
     $picture = nullIfNotSet($_POST, "picture");
     $anonymous = emptyIfNotSet($_POST, "anonymous");
     $tags = emptyIfNotSet($_POST, "tags");
+    $expiration = nullIfNotSet($_POST, "exptime");//todo
+    if ($expiration !== null)
+        $expiration = (int)$expiration;
 
     $uploader = new PostUploader($_POST["category"], $content,
-        $picture, $anonymous, $title, $tags, $db);
+        $picture, $anonymous, $title, $tags, $expiration, $db);
 
     $db->expects($this->once())->method('postMsg')->with($content,
-     $_POST["category"], getCurUserId(), $picture, $anonymous, $title. $tags)->willReturn(True);
+     $_POST["category"], getCurUserId(), $picture, $anonymous, $title. $tags, $expiration)->willReturn(True);
 
     $uploader->doPost();
   }
