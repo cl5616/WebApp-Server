@@ -179,7 +179,7 @@ final class PostGREDatabase implements Database
 
     public function getUserPosts($userid, $offset, $limit, $category, $orderval)
     {
-        $where = " WHERE user_id=$userid and deleted=B'0'".
+        $where = " WHERE ".self::DB_POSTS_TAB.".user_id=$userid and deleted=B'0'".
             ($category === null ? "" : " and category='$category'");
         return $this->getPostsCustomWhere($where, $offset, $limit, $orderval);
     }
@@ -491,7 +491,8 @@ final class PostGREDatabase implements Database
     }
     public function deletePost($post_id, $user_id)
     {
-        $query = "DELETE FROM ".self::DB_POSTS_TAB." WHERE id=$post_id AND user_id=$user_id";
+        $query = "UPDATE ".self::DB_POSTS_TAB." SET deleted=B'1'".
+            " WHERE id=$post_id AND user_id=$user_id";
         $result = pg_query($this->conn, $query);
         if (!$result)
             return false;

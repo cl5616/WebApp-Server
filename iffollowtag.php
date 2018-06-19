@@ -5,7 +5,8 @@ require_once "database.php";
 require_once "Classes/Class_iffollow.php";
 
 /*/test---------------
-$_GET["userid"] = "";
+$_GET["userid"] = "10";
+$_GET["tag"] = "ctf";
 //test---------------*/
 
 dieIfEmpty($_GET, "userid");

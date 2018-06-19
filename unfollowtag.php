@@ -3,9 +3,9 @@
 require_once "preprocess.php";
 require_once "utils.php";
 require_once "database.php";
-require_once "Classes/Class_follow.php";
-//test----------------
-//$_POST["tag"] = "ctf";
+require_once "Classes/Class_unfollow.php";
+/*/test----------------
+$_POST["tag"] = "ctf";
 //test----------------*/
 dieIfEmpty($_POST, "tag");
 $tag = getTag($_POST["tag"]);
