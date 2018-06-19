@@ -482,4 +482,13 @@ final class PostGREDatabase implements Database
         else
             return 0;
     }
+    public function deletePost($post_id, $user_id)
+    {
+        $query = "DELETE FROM ".self::DB_POSTS_TAB." WHERE id=$post_id AND user_id=$user_id";
+        $result = pg_query($this->conn, $query);
+        if (!$result)
+            return false;
+        else
+            return true;
+    }
 }
