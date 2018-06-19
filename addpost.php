@@ -19,6 +19,10 @@ $title = emptyIfNotSet($_POST,"title");
     $anonymous = emptyIfNotSet($_POST, "anonymous");
     $tags = emptyIfNotSet($_POST, "tags");
 
+    $expiration = nullIfNotSet($_POST, "exptime");//todo
+    if ($expiration !== null)
+        $expiration = (int)$expiration;
+
     $uploader = new PostUploader($_POST["category"], $content,
-        $picture, $anonymous, $title,$tags, $db);
+        $picture, $anonymous, $title,$tags, $expiration, $db);
     $uploader->doPost();

@@ -9,10 +9,11 @@ class PostUploader extends ContentUploader
     private $anonymous;
     private $title;
     private $tags;
+    private $expiration;
 
     public function __construct($category, $content, $picture,
                                 $anonymous, $title, $tags,
-                                $database)
+                                $expiration, $database)
     {
         parent::__construct($content, $database);
         $this->category = $category;
@@ -20,13 +21,14 @@ class PostUploader extends ContentUploader
         $this->anonymous = strcmp($anonymous, "1") === 0;
         $this->title = $title;
         $this->tags = $tags;
+        $this->expiration = $expiration;
     }
     public function doPost()
     {
         $user_id = getCurUserId();
         $ret = $this->database->postMsg($this->content,
             $this->category, $user_id, $this->picture,
-            $this->anonymous, $this->tags, $this->title);
+            $this->anonymous, $this->tags, $this->title, $this->expiration);
         self::returnJsonStatus($ret);
     }
 }

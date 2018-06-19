@@ -5,7 +5,7 @@ require_once "utils.php";
 
 interface Database
 {
-    public function postMsg($content, $category, $user_id, $picture, $anonymous, $tags, $title);
+    public function postMsg($content, $category, $user_id, $picture, $anonymous, $tags, $title, $expiration);
     public function postComment($msg_id, $content, $reply_id, $user_id);
     public function getPosts($category, $offset, $limit, $order_val);
     public function ifEmailExist($email);
@@ -44,6 +44,8 @@ final class PostGREDatabase implements Database
     const DB_USER_TAB = "users";
     //constants
 
+    const VALID_POST = "(deleted=B'0' and (expiration=null or CURRENT_TIMESTAMP<expiration))";
+
 
     private $conn;
     private function __construct()
@@ -64,15 +66,16 @@ final class PostGREDatabase implements Database
 
     public function postMsg($content, $category,
                             $user_id, $picture, $anonymous,
-                            $tags, $title)
+                            $tags, $title, $expiration)
     {
+        $expiration_sql = $expiration === null ? "NULL" : "to_timestamp($expiration)";
         $tags_arr = fetchAllWordsAsArr($tags);
         $tags_text = join(" ", $tags_arr);
         $query = "INSERT INTO ".self::DB_POSTS_TAB.
             " (user_id,post_time,picture,content,category,deleted,".
-            "anonymous,title,tags,search_vec)".
+            "anonymous,title,tags,expiration,search_vec)".
             " VALUES (".$user_id.",CURRENT_TIMESTAMP,$3,$1,$2,B'0',".
-            self::boolToBit($anonymous).",$4,$6,".
+            self::boolToBit($anonymous).",$4,$6,$expiration_sql,".
             "setweight(to_tsvector('english',$5),'C') ||".
             "setweight(to_tsvector('english',$6),'B') ||".
             "setweight(to_tsvector('english',$1),'A'))";
@@ -145,11 +148,11 @@ final class PostGREDatabase implements Database
     {
         if ($category !== null)
         {
-            $where = " WHERE category='".$category."' and deleted=B'0'";
+            $where = " WHERE category='".$category."' and ".self::VALID_POST;
         }
         else
         {
-            $where = " WHERE deleted=B'0'";
+            $where = " WHERE ".self::VALID_POST;
         }
         return $where;
     }
@@ -179,7 +182,7 @@ final class PostGREDatabase implements Database
 
     public function getUserPosts($userid, $offset, $limit, $category, $orderval)
     {
-        $where = " WHERE ".self::DB_POSTS_TAB.".user_id=$userid and deleted=B'0'".
+        $where = " WHERE ".self::DB_POSTS_TAB.".user_id=$userid and ".self::VALID_POST.
             ($category === null ? "" : " and category='$category'");
         return $this->getPostsCustomWhere($where, $offset, $limit, $orderval);
     }
@@ -188,7 +191,7 @@ final class PostGREDatabase implements Database
     {
         $query = self::tagsToQueries($tags);
         $order = self::getOrderVal($orderval, $query);
-        $where = " WHERE to_tsquery('english','$query') @@ search_vec and deleted=B'0'".
+        $where = " WHERE to_tsquery('english','$query') @@ search_vec and ".self::VALID_POST.
             ($category === null ? "" : " and category='$category'");
         return $this->getPostsCustomWhere($where, $offset, $limit, $order);
     }
@@ -204,7 +207,7 @@ final class PostGREDatabase implements Database
         else
         {
             $order = self::getOrderVal($orderval, $new_query);
-            $where = " WHERE to_tsquery('english','$new_query') @@ search_vec and deleted=B'0'".
+            $where = " WHERE to_tsquery('english','$new_query') @@ search_vec and ".self::VALID_POST.
                 ($category === null ? "" : " and category='$category'");
             return $this->getPostsCustomWhere($where, $offset, $limit, $order);
         }
